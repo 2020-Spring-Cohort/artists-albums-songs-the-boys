@@ -11,6 +11,7 @@ ec762e chocolate
 :root {
     --color-section-bg: #71cbd4;
     --color-txt: #064257;
+    --color-txt-hover: #0a84ad;
     --color-main-bg: #dee1cc;
     --color-header-footer: #ec762e;
 
@@ -20,35 +21,20 @@ body {
     background-color: var(--color-main-bg);
     color: var(--color-txt);
     font-family: 'Raleway', sans-serif;
+    user-select: none;
 }
 
+ul {
+    list-style: none;
+}
 
-button {
-    box-shadow: inset 0px -3px 7px 0px #29bbff;
-    background: linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-    background-color: #2dabf9;
-    border-radius: 3px;
-    border: 1px solid var(--color-main-bg);
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    padding: 9px 23px;
+a {
     text-decoration: none;
-    text-shadow: 0px 1px 0px #263666;
 }
 
-button:hover {
-    background: linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
-    background-color: #0688fa;
+ul a:hover {
+    color: var(--color-txt-hover);
 }
-
-button:active {
-    position: relative;
-    top: 1px;
-}
-
-
-
 
 
 section {
@@ -58,13 +44,29 @@ section {
 }
 
 
-.artist-section {}
+.button {
+    background-color: var(--color-txt-hover);
+    border-radius: 10px;
+    border: 1px solid #337bc4;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 14px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+}
 
-.album-section {}
+.button:hover {
+    background: linear-gradient(to bottom, var(--color-txt-hover) 55%, var(--color-section-bg) 100%);
+    background-color: var(--color-txt-hover);
+}
 
-.song-section {}
+.button:active {
+    position: relative;
+    top: 1px;
 
-
+}
 
 
 header,
@@ -74,4 +76,13 @@ footer {
 
 .submit-button {
     border-radius: 0 0 10px 10px;
+}
+
+
+.song-duration::before {
+    content: "("
+}
+
+.song-duration::after {
+    content: ")"
 }
