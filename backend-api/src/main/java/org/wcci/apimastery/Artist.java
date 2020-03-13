@@ -14,12 +14,15 @@ public class Artist {
     private Long id;
     @OneToMany(mappedBy = "artist")
     Collection<Album> albums;
+    @OneToMany(mappedBy = "artist")
+    private Collection<Song> songs;
 
     private String name;
 
-    protected Artist(){
+    protected Artist() {
     }
-    public Artist(String name){
+
+    public Artist(String name) {
         this.name = name;
     }
 
@@ -33,5 +36,11 @@ public class Artist {
 
     public String getName() {
         return name;
+    }
+
+    public Collection<Song> getSongs() {
+        return songs;
+
+
     }
 }

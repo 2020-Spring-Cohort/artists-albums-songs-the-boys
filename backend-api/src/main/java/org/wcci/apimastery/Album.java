@@ -1,9 +1,7 @@
 package org.wcci.apimastery;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Collection;
 
 
 @Entity
@@ -15,6 +13,8 @@ public class Album {
         private Long id;
         @ManyToOne
         private Artist artist;
+        @OneToMany (mappedBy = "album")
+        private Collection<Song>songs;
 
         protected Album(){
         }
@@ -35,4 +35,7 @@ public class Album {
                 return artist;
         }
 
+        public Collection<Song> getSongs() {
+                return songs;
+        }
 }
