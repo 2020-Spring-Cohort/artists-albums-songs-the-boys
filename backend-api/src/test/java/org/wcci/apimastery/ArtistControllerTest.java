@@ -3,8 +3,10 @@ package org.wcci.apimastery;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collection;
 import java.util.Collections;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class ArtistControllerTest {
@@ -24,5 +26,11 @@ public class ArtistControllerTest {
     public void retrieveArtistsReturnsListOfArtistsFromMockRepo(){
         underTest.retrieveArtists();
         verify(artistRepository).findAll();
+    }
+
+    @Test
+    public void retrieveArtistsReturnsListOfArtistsContainingMockArtist(){
+        Collection<Artist> result = underTest.retrieveArtists();
+        assertThat(result).contains(testArtist);
     }
 }
