@@ -3,8 +3,10 @@ package org.wcci.apimastery;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collection;
 import java.util.Collections;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class SongControllerTest {
@@ -31,4 +33,11 @@ public class SongControllerTest {
         verify(songRepo).findAll();
     }
 
+    @Test
+    public void retrieveSongsReturnsListOfSongsContainingMockSong(){
+        Collection<Song> result = underTest.retrieveSongs();
+        assertThat(result).contains(testSong);
+    }
+
+    
 }
