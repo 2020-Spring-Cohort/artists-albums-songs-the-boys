@@ -76,5 +76,19 @@ public class Populator implements CommandLineRunner {
         songRepository.save(anotherLife);
         Song justLikeYou = new Song("Just Like You", "9:30", rollinsBand, theEndOfSilence);
         songRepository.save(justLikeYou);
+
+        Song tooMuchRock = new Song("Too Much Rock and Roll", "3:50", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(tooMuchRock);
+        Song marcus = new Song("Marcus Has the Evil in Him", "4:01", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(marcus);
+        Song nowhere = new Song("Nowhere to Go but Inside", "3:04", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(nowhere);
+        Song tenX = new Song("10X", "3:04", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(tenX);
+        Song always = new Song("Always the Same", "2:57", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(always);
+        Song soul = new Song("Soul Implant", "1:56", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(soul);
+        
     }
 }
