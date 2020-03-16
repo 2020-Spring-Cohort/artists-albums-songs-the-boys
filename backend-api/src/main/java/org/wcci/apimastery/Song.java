@@ -9,6 +9,7 @@ public class Song {
     @GeneratedValue
     private Long id;
     private String name;
+    private String duration;
     @ManyToOne
     private Artist artist;
     @ManyToOne
@@ -20,8 +21,9 @@ public class Song {
 
 
 
-    public Song(String name,Artist artist,Album album) {
+    public Song(String name, String duration, Artist artist,Album album) {
         this.name=name;
+        this.duration=duration;
         this.artist=artist;
         this.album=album;
 
@@ -35,6 +37,10 @@ public class Song {
 
     public String getName() {
         return name;
+    }
+
+    public String getDuration(){
+        return duration;
     }
 
     public Artist getArtist() {

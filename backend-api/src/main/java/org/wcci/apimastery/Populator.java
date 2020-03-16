@@ -30,6 +30,7 @@ public class Populator implements CommandLineRunner {
         artistRepository.save(sufjanStevens);
         Artist weirdAlYankovic = new Artist("Weird Al Yankovic");
         artistRepository.save(weirdAlYankovic);
+
         Album theEndOfSilence = new Album("The End Of Silence", rollinsBand);
         albumRepository.save(theEndOfSilence);
         Album aNicerShadeOfRed = new Album("A Nicer Shade Of Red", rollinsBand);
@@ -55,5 +56,25 @@ public class Populator implements CommandLineRunner {
         Album runningScissors = new Album("Running With Scissors", weirdAlYankovic);
         albumRepository.save(runningScissors);
 
+        Song lowSelfOpinion = new Song ("Low Self Opinion", "5:18", rollinsBand, theEndOfSilence);
+        songRepository.save(lowSelfOpinion);
+        Song grip = new Song ("Grip", "4:50", rollinsBand, theEndOfSilence);
+        songRepository.save(grip);
+        Song tearing = new Song("Tearing", "4:58", rollinsBand, theEndOfSilence);
+        songRepository.save(tearing);
+        Song youDidntNeed = new Song ("You Didn't Need", "5:30", rollinsBand, theEndOfSilence);
+        songRepository.save(youDidntNeed);
+        Song almostReal = new Song ("Almost Real", "8:03", rollinsBand, theEndOfSilence);
+        songRepository.save(almostReal);
+        Song obscene = new Song ("Obscene", "8:50", rollinsBand, theEndOfSilence);
+        songRepository.save(obscene);
+        Song whatDoYouDo = new Song ("What Do You Do", "7:22", rollinsBand, theEndOfSilence);
+        songRepository.save(whatDoYouDo);
+        Song bluesJam = new Song("Blues Jam", "11:46", rollinsBand, theEndOfSilence);
+        songRepository.save(bluesJam);
+        Song anotherLife = new Song("Another Life", "4:39", rollinsBand, theEndOfSilence);
+        songRepository.save(anotherLife);
+        Song justLikeYou = new Song("Just Like You", "9:30", rollinsBand, theEndOfSilence);
+        songRepository.save(justLikeYou);
     }
 }
