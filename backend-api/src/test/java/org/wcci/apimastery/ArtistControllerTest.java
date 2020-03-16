@@ -2,12 +2,16 @@ package org.wcci.apimastery;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Collection;
 import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class ArtistControllerTest {
     private ArtistRepository artistRepository;
@@ -32,5 +36,12 @@ public class ArtistControllerTest {
     public void retrieveArtistsReturnsListOfArtistsContainingMockArtist(){
         Collection<Artist> result = underTest.retrieveArtists();
         assertThat(result).contains(testArtist);
+    }
+
+    @Test
+    public void underTestIsWiredCorrectlyWithAnnotations() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
+        mockMvc.perform(get("/artists"))
+                .andExpect(status().isOk());
     }
 }
