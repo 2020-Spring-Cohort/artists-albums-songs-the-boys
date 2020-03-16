@@ -10,14 +10,14 @@ import java.util.Collections;
 @RestController
 
 public class AlbumController {
+
     private AlbumRepository albumRepository;
 
     public AlbumController(AlbumRepository albumRepository) {
-
         this.albumRepository = albumRepository;
     }
 
-@RequestMapping("/albums")
+    @RequestMapping("/albums")
     public Collection<Album> retrieveAlbums() {
         return (Collection<Album>) albumRepository.findAll();
     }

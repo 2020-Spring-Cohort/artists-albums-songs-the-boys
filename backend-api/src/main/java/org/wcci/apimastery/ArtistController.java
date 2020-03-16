@@ -12,6 +12,7 @@ public class ArtistController {
     public ArtistController(ArtistRepository artistRepository){
         this.artistRepository = artistRepository;
     }
+
     @RequestMapping("/artists")
     public Collection<Artist> retrieveArtists(){
         return (Collection<Artist>) artistRepository.findAll();
