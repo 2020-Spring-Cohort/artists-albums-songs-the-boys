@@ -291,6 +291,32 @@ public class Populator implements CommandLineRunner {
         Song impossibleSoul = new Song("Impossible Soul", "25:35", sufjanStevens, ageAdz);
         songRepository.save(impossibleSoul);
 
+        Song withDignity = new Song("Death With Dignity", "4:00", sufjanStevens, carrieLowell);
+        songRepository.save(withDignity);
+        Song knownBetter = new Song("Should Have Known Better", "5:08", sufjanStevens, carrieLowell);
+        songRepository.save(knownBetter);
+        Song allOfYou = new Song("All Of Me Wnats All Of You", "3:41", sufjanStevens, carrieLowell);
+        songRepository.save(allOfYou);
+        Song theBlood = new Song("Drawn To The Blood", "3:18", sufjanStevens, carrieLowell);
+        songRepository.save(theBlood);
+        Song eugene = new Song("Eugene", "2:26", sufjanStevens, carrieLowell);
+        songRepository.save(eugene);
+        Song ofJuly = new Song("Fourth Of July", "4:40", sufjanStevens, carrieLowell);
+        songRepository.save(ofJuly);
+        Song onlyThing = new Song("The Only Thing", "4:44", sufjanStevens, carrieLowell);
+        songRepository.save(onlyThing);
+        Song andLowell = new Song("Carrie And Lowell", "3:14", sufjanStevens, carrieLowell);
+        songRepository.save(andLowell);
+        Song myBeloved = new Song("John My Beloved", "5:03", sufjanStevens, carrieLowell);
+        songRepository.save(myBeloved);
+        Song ofTheCross = new Song("No Shade In The Shadow Of The Cross", "2:40", sufjanStevens, carrieLowell);
+        songRepository.save(ofTheCross);
+        Song bucketOfGold = new Song("Blue Bucket Of Gold", "4:44", sufjanStevens, carrieLowell);
+        songRepository.save(bucketOfGold);
+
+        
+
+
 
     }
 }
