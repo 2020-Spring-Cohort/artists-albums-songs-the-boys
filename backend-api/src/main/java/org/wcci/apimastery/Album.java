@@ -16,12 +16,14 @@ public class Album {
         @OneToMany (mappedBy = "album")
         private Collection<Song>songs;
 
+        public Album(String name, Artist artist){
+                this.name = name;
+                this.artist = artist;
+        }
+
         protected Album(){
         }
-        public Album(String name, Artist artist){
-            this.name = name;
-            this.artist = artist;
-        }
+
 
         public String getName() {
                 return name;
