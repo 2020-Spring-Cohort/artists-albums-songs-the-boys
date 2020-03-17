@@ -10,7 +10,7 @@ public class ArtistController {
     private ArtistRepository artistRepository;
 
     public ArtistController(ArtistRepository artistRepository){
-        this.artistRepository = artistRepository;
+        this.artistRepository = artistRepository; 
     }
 
     @RequestMapping("/artists")

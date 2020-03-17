@@ -47,7 +47,7 @@ public class ArtistControllerTest {
     }
 
     @Test
-    public void retrieveSingleArtistReturnsASingleArist(){
+    public void retrieveSingleArtistReturnsASingleArtist(){
         Artist result = underTest.retrieveSingleArtist(2L);
         verify(artistRepository).findById(2L);
         assertThat(result).isEqualTo(testArtist);
