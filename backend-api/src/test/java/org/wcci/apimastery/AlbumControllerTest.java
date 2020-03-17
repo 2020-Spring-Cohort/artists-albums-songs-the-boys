@@ -57,9 +57,15 @@ public class AlbumControllerTest {
     }
 
     @Test
-    public void retrieveAlbumReturnsSingleAlbum(){
+    public void retrieveSingleAlbumReturnsSingleAlbum(){
         underTest.retrieveSingleAlbum();
         verify(albumRepo).findById(testAlbum.getId());
     }
-    
+    @Test
+    public void controllerIsWiredCorrectlyForSingleAlbumEndpoint() throws Exception
+        {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
+        mockMvc.perform(get("/album"))
+                .andExpect(status().isOk());
+    }
 }
