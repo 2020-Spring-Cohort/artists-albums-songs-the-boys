@@ -42,10 +42,16 @@ public class SongControllerTest {
         assertThat(result).contains(testSong);
     }
     @Test
+<<<<<<< HEAD
     public void shouldGoToIndividualEndPoint() throws Exception{
         List<Song> songCollection = Collections.singletonList(testSong);
         when(songStorage)
     }
 
+=======
+    public void shouldGoToIndividualSongEndPoint() throws Exception{
+        when(songRepo.findByTitle("Test Song"));
+    }
+>>>>>>> SongController
     
 }
