@@ -52,4 +52,5 @@ public class ArtistControllerTest {
         verify(artistRepository).findById(2L);
         assertThat(result).isEqualTo(testArtist);
     }
+
 }
