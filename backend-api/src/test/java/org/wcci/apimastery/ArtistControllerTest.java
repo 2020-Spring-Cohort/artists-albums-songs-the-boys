@@ -24,6 +24,7 @@ public class ArtistControllerTest {
         underTest = new ArtistController(artistRepository);
         testArtist = new Artist("testArtist");
         when(artistRepository.findAll()).thenReturn(Collections.singletonList(testArtist));
+        when(artistRepository.findById(2L)).thenReturn(java.util.Optional.ofNullable(testArtist));
     }
 
     @Test
@@ -44,4 +45,12 @@ public class ArtistControllerTest {
         mockMvc.perform(get("/artists"))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    public void retrieveSingleArtistReturnsASingleArtist(){
+        Artist result = underTest.retrieveSingleArtist(2L);
+        verify(artistRepository).findById(2L);
+        assertThat(result).isEqualTo(testArtist);
+    }
+
 }

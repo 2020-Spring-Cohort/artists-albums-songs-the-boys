@@ -10,11 +10,16 @@ public class ArtistController {
     private ArtistRepository artistRepository;
 
     public ArtistController(ArtistRepository artistRepository){
-        this.artistRepository = artistRepository;
+        this.artistRepository = artistRepository; 
     }
 
     @RequestMapping("/artists")
     public Collection<Artist> retrieveArtists(){
         return (Collection<Artist>) artistRepository.findAll();
+    }
+
+    @RequestMapping("/single-artist")
+    public Artist retrieveSingleArtist(Long id) {
+        return artistRepository.findById(id).get();
     }
 }
