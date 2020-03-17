@@ -339,9 +339,30 @@ public class Populator implements CommandLineRunner {
         Song wentCrazy = new Song("The Night Santa Went Crazy", "4:03", weirdAlYankovic, badHair);
         songRepository.save(wentCrazy);
 
-        
-
-
+        Song sagaBegins = new Song("The Saga Begins", "5:27", weirdAlYankovic, runningScissors);
+        songRepository.save(sagaBegins);
+        Song eddieVedder = new Song("My Baby's In Love With Eddie Vedder", "3:25", weirdAlYankovic, runningScissors);
+        songRepository.save(eddieVedder);
+        Song flyRabbi = new Song("Pretty Fly For A Rabbi", "3:02", weirdAlYankovic, runningScissors);
+        songRepository.save(flyRabbi);
+        Song showTheme = new Song("The Weird Al Show Theme", "1:14", weirdAlYankovic, runningScissors);
+        songRepository.save(showTheme);
+        Song jerrySpringer = new Song("Jerry Springer", "2:46", weirdAlYankovic, runningScissors);
+        songRepository.save(jerrySpringer);
+        Song germs = new Song("Germs", "4:38", weirdAlYankovic, runningScissors);
+        songRepository.save(germs);
+        Song polkaPower = new Song("Polka Power", "4:21", weirdAlYankovic, runningScissors);
+        songRepository.save(polkaPower);
+        Song forToday = new Song("Your Horoscope For Today", "3:59", weirdAlYankovic, runningScissors);
+        songRepository.save(forToday);
+        Song thePentiums = new Song("It's All About The Pentiums", "3:34", weirdAlYankovic, runningScissors);
+        songRepository.save(thePentiums);
+        Song truckSong = new Song("Truck Drivin' Song", "2:27", weirdAlYankovic, runningScissors);
+        songRepository.save(truckSong);
+        Song diet = new Song("Grapefruit Diet", "3:30", weirdAlYankovic, runningScissors);
+        songRepository.save(diet);
+        Song albuquerque = new Song("Albuquerque", "11:23", weirdAlYankovic, runningScissors);
+        songRepository.save(albuquerque);
 
     }
 }
