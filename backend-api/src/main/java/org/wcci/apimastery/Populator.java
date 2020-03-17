@@ -161,5 +161,43 @@ public class Populator implements CommandLineRunner {
 
         Song family = new Song("Keep the Family Close", "5:28", drake, views);
         songRepository.save(family);
+        Song nine = new Song("9", "4:15", drake, views);
+        songRepository.save(nine);
+        Song withMe = new Song("U With Me?", "4:57", drake, views);
+        songRepository.save(withMe);
+        Song feel = new Song("Feel No Ways", "4:00", drake, views);
+        songRepository.save(feel);
+        Song hype = new Song("Hype", "3:29", drake, views);
+        songRepository.save(hype);
+        Song weston = new Song("Weston Road Flows", "4:13", drake, views);
+        songRepository.save(weston);
+        Song redemption = new Song("Redemption", "5:33", drake, views);
+        songRepository.save(redemption);
+        Song withYou = new Song("With You feat. PartyNextDoor", "3:15", drake, views);
+        songRepository.save(withYou);
+        Song faithful = new Song("Faithful feat. Pimp C & dvsn", "4:50", drake, views);
+        songRepository.save(faithful);
+        Song stillHere = new Song("Still Here", "3:09", drake, views);
+        songRepository.save(stillHere);
+        Song controlla = new Song("Controlla", "4:05", drake, views);
+        songRepository.save(controlla);
+        Song oneDance = new Song("One Dance feat Wizkid & Kyle", "2:53", drake, views);
+        songRepository.save(oneDance);
+        Song child = new Song("Child Play", "3:32", drake, views);
+        songRepository.save(child);
+        Song pop = new Song("Pop Style", "3:32", drake, views);
+        songRepository.save(pop);
+        Song tooGood = new Song("Too Good feat. Rihanna", "4:23", drake, views);
+        songRepository.save(tooGood);
+        Song summer = new Song("Summers Over Interlude", "1:46", drake, views);
+        songRepository.save(summer);
+        Song fire = new Song("Fire & Desire", "3:58", drake, views);
+        songRepository.save(fire);
+        Song viewsSong = new Song("Views", "5:11", drake, views);
+        songRepository.save(viewsSong);
+        Song hotline = new Song("Hotline Bling", "4:27", drake, views);
+        songRepository.save(hotline);
+
+        
     }
 }
