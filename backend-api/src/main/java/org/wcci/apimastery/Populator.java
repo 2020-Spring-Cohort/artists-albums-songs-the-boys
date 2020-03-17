@@ -246,7 +246,7 @@ public class Populator implements CommandLineRunner {
         Song questionable = new Song("Questionable", "2:07", slightlyStoopid, everythingNeed);
         songRepository.save(questionable);
         Song runnin = new Song("Runnin With a Gun", "3:31", slightlyStoopid, everythingNeed);
-        songRepository.save(runnin;);
+        songRepository.save(runnin);
         Song killin = new Song("Killin Me Deep Inside", "4:54", slightlyStoopid, everythingNeed);
         songRepository.save(killin);
         Song gentlemen = new Song("Perfect Gentlemen", "1:40", slightlyStoopid, everythingNeed);
@@ -267,5 +267,30 @@ public class Populator implements CommandLineRunner {
         songRepository.save(mellow);
         Song collie = new Song("Collie Man", "2:13", slightlyStoopid, everythingNeed);
         songRepository.save(collie);
+
+        Song futileDevices = new Song("Futile Devices", "2:11", sufjanStevens, ageAdz);
+        songRepository.save(futileDevices);
+        Song tooMuchSong = new Song("Too Much", "6:44", sufjanStevens, ageAdz);
+        songRepository.save(tooMuchSong);
+        Song ageOfAdz = new Song("Age Of Adz", "8:00", sufjanStevens, ageAdz);
+        songRepository.save(ageOfAdz);
+        Song iWalked = new Song("I Walked", "5:02", sufjanStevens, ageAdz);
+        songRepository.save(iWalked);
+        Song imOlder = new Song("Now That I'm Older", "4:56", sufjanStevens, ageAdz);
+        songRepository.save(imOlder);
+        Song getRight = new Song("Get Real Get Right", "5:10", sufjanStevens, ageAdz);
+        songRepository.save(getRight);
+        Song badCommunication = new Song("Bad Communication", "2:24", sufjanStevens, ageAdz);
+        songRepository.save(badCommunication);
+        Song vesuvius = new Song("Vesuvius", "5:26", sufjanStevens, ageAdz);
+        songRepository.save(vesuvius);
+        Song forMyself = new Song("All For Myself", "2:55", sufjanStevens, ageAdz);
+        songRepository.save(forMyself);
+        Song beWell = new Song("I Want To Be Well", "6:27", sufjanStevens, ageAdz);
+        songRepository.save(beWell);
+        Song impossibleSoul = new Song("Impossible Soul", "25:35", sufjanStevens, ageAdz);
+        songRepository.save(impossibleSoul);
+
+
     }
 }
