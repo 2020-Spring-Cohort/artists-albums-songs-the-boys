@@ -1,6 +1,5 @@
 package org.wcci.apimastery;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +39,5 @@ public class HttpRequestTest {
                 "http://localhost:" + port + "/artists", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
-
 
 }

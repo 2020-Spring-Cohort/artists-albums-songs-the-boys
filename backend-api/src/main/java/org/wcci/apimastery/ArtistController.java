@@ -17,4 +17,8 @@ public class ArtistController {
     public Collection<Artist> retrieveArtists(){
         return (Collection<Artist>) artistRepository.findAll();
     }
+
+    public Artist retrieveSingleArtist(Long id) {
+        return artistRepository.findById(id).get();
+    }
 }
