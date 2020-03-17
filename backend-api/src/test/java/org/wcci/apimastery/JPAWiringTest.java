@@ -34,8 +34,8 @@ public class JPAWiringTest {
         testArtist = new Artist("testArtist");
         testAlbum1 = new Album("testName1", testArtist);
         testAlbum2 = new Album("testName2", testArtist);
-        testSong1 = new Song("testSong1", testArtist, testAlbum1);
-        testSong2 = new Song("testSong2", testArtist, testAlbum1);
+        testSong1 = new Song("testSong1", "2:00", testArtist, testAlbum1);
+        testSong2 = new Song("testSong2", "3:00", testArtist, testAlbum1);
     }
 
     @Test
