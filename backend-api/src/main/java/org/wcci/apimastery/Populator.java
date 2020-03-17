@@ -314,6 +314,31 @@ public class Populator implements CommandLineRunner {
         Song bucketOfGold = new Song("Blue Bucket Of Gold", "4:44", sufjanStevens, carrieLowell);
         songRepository.save(bucketOfGold);
 
+        Song amishParadise = new Song("Amish Paradise", "3:20", weirdAlYankovic, badHair);
+        songRepository.save(amishParadise);
+        Song knowIsWrong = new Song("Everything You Know Is Wrong", "3:48", weirdAlYankovic, badHair);
+        songRepository.save(knowIsWrong);
+        Song cavitySearch = new Song("Cavity Search", "4:19", weirdAlYankovic, badHair);
+        songRepository.save(cavitySearch);
+        Song inSick = new Song("Callin' In Sick", "3:40", weirdAlYankovic, badHair);
+        songRepository.save(inSick);
+        Song altPolka = new Song("Alternative Polka", "4:50", weirdAlYankovic, badHair);
+        songRepository.save(altPolka);
+        Song beenGone = new Song("Since You've Been Gone", "1:20", weirdAlYankovic, badHair);
+        songRepository.save(beenGone);
+        Song gump = new Song("Gump", "2:11", weirdAlYankovic, badHair);
+        songRepository.save(gump);
+        Song sickOfYou = new Song("I'm So Sick Of You", "3:26", weirdAlYankovic, badHair);
+        songRepository.save(sickOfYou);
+        Song syndicated = new Song("Syndicated Inc", "3:54", weirdAlYankovic, badHair);
+        songRepository.save(syndicated);
+        Song rememberLarry = new Song("I Remember Larry", "3:56", weirdAlYankovic, badHair);
+        songRepository.save(rememberLarry);
+        Song phoneCalls = new Song("Phone Calls", "3:22", weirdAlYankovic, badHair);
+        songRepository.save(phoneCalls);
+        Song wentCrazy = new Song("The Night Santa Went Crazy", "4:03", weirdAlYankovic, badHair);
+        songRepository.save(wentCrazy);
+
         
 
 
