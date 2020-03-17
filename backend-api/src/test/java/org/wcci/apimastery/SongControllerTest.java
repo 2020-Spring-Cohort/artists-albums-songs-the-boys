@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.LIST;
 import static org.mockito.Mockito.*;
 
 public class SongControllerTest {
@@ -16,6 +18,7 @@ public class SongControllerTest {
     private Song testSong;
     private Artist testArtist;
     private Album testAlbum;
+    private SongStorage songStorage;
 
     @BeforeEach
     void setUp(){
@@ -37,6 +40,11 @@ public class SongControllerTest {
     public void retrieveSongsReturnsListOfSongsContainingMockSong(){
         Collection<Song> result = underTest.retrieveSongs();
         assertThat(result).contains(testSong);
+    }
+    @Test
+    public void shouldGoToIndividualEndPoint() throws Exception{
+        List<Song> songCollection = Collections.singletonList(testSong);
+        when(songStorage)
     }
 
     
