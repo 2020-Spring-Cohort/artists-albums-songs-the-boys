@@ -89,6 +89,77 @@ public class Populator implements CommandLineRunner {
         songRepository.save(always);
         Song soul = new Song("Soul Implant", "1:56", rollinsBand, aNicerShadeOfRed);
         songRepository.save(soul);
-        
+        Song fun = new Song("Ain't It Fun", "3:43", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(fun);
+        Song lost = new Song("You Lost Me", "5:47", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(lost);
+        Song stone = new Song("Stone Washed Clean", "4:18", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(stone);
+        Song lifeDenied = new Song("A Life Denied", "3:25", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(lifeDenied);
+        Song number = new Song("Your Number IS One (Long Version)", "4:37", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(number);
+        Song drag = new Song("Such a Drag", "12:55", rollinsBand, aNicerShadeOfRed);
+        songRepository.save(drag);
+
+        Song danish = new Song("Danish Pastry Lyrics", "3:32", porridgeRadio, ricePasta);
+        songRepository.save(danish);
+        Song lemonade = new Song("Lemonade", "2:41", porridgeRadio, ricePasta);
+        songRepository.save(lemonade);
+        Song barks = new Song("Barks Like A Dog", "5:26", porridgeRadio, ricePasta);
+        songRepository.save(barks);
+        Song cow = new Song("Walking The Cow (Daniel Johnston cover)", "2:35", porridgeRadio, ricePasta);
+        songRepository.save(cow);
+        Song hearMe = new Song("Can U Hear Me Now", "7:33", porridgeRadio, ricePasta);
+        songRepository.save(hearMe);
+        Song sorry = new Song("Sorry", "5:31", porridgeRadio, ricePasta);
+        songRepository.save(sorry);
+        Song worms = new Song("Worms", "1:51", porridgeRadio, ricePasta);
+        songRepository.save(worms);
+        Song wasLike = new Song("And I Was Like", "1:38", porridgeRadio, ricePasta);
+        songRepository.save(wasLike);
+        Song eugh = new Song("Eugh", "4:38", porridgeRadio, ricePasta);
+        songRepository.save(eugh);
+
+        Song sweet = new Song("Sweet", "3:42", porridgeRadio, everyBad);
+        songRepository.save(sweet);
+        Song askMe = new Song("Don't Ask Me Twice", "3:21", porridgeRadio, everyBad);
+        songRepository.save(askMe);
+        Song giveTake = new Song("Give/Take", "3:53", porridgeRadio, everyBad);
+        songRepository.save(giveTake);
+        Song lilac = new Song("Lilac", "5:27", porridgeRadio, everyBad);
+        songRepository.save(lilac);
+        Song circling = new Song("Circling", "3:20", porridgeRadio, everyBad);
+        songRepository.save(circling);
+
+        Song tuscan = new Song("Tuscan Leather", "6:06", drake, nothingSame);
+        songRepository.save(tuscan);
+        Song furthest = new Song("Furthest Things", "4:27", drake, nothingSame);
+        songRepository.save(furthest);
+        Song bottom = new Song("Started From the Bottom", "2:53", drake, nothingSame);
+        songRepository.save(bottom);
+        Song wutang = new Song("Wu-Tang Forever", "3:37", drake, nothingSame);
+        songRepository.save(wutang);
+        Song ownIt = new Song("Own It", "4:11", drake, nothingSame);
+        songRepository.save(ownIt);
+        Song worst = new Song("Worst Behavior", "4:30", drake, nothingSame);
+        songRepository.save(worst);
+        Song time = new Song("From Time feat. Jhene Aiko", "5:22", drake, nothingSame);
+        songRepository.save(time);
+        Song holdOn = new Song("Hold On, We're Going Home feat. Majid Jordan", "3:51", drake, nothingSame);
+        songRepository.save(holdOn);
+        Song connect = new Song("Connect", "4:56", drake, nothingSame);
+        songRepository.save(connect);
+        Song language = new Song("The Language", "3:44", drake, nothingSame);
+        songRepository.save(language);
+        Song city = new Song("305 to My City feat. Detail", "4:15", drake, nothingSame);
+        songRepository.save(city);
+        Song tooMuch = new Song("Too Much", "4:21", drake, nothingSame);
+        songRepository.save(tooMuch);
+        Song pound = new Song("Pound Cake/Paris Morton Music feat. Jay-Z", "27:13", drake, nothingSame);
+        songRepository.save(pound);
+
+        Song family = new Song("Keep the Family Close", "5:28", drake, views);
+        songRepository.save(family);
     }
 }
