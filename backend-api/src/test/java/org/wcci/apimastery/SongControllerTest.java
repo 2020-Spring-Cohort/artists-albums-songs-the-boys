@@ -38,6 +38,9 @@ public class SongControllerTest {
         Collection<Song> result = underTest.retrieveSongs();
         assertThat(result).contains(testSong);
     }
-
+    @Test
+    public void shouldGoToIndividualSongEndPoint() throws Exception{
+        when(songRepo.findByTitle("Test Song"));
+    }
     
 }
