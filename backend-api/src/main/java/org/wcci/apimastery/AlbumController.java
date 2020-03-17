@@ -1,6 +1,7 @@
 package org.wcci.apimastery;
 
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,8 +12,6 @@ import java.util.Collection;
 public class AlbumController {
 
     private AlbumRepository albumRepository;
-    private Artist testArtist = new Artist("testName");
-    private Album testAlbum = new Album("testName", testArtist);
 
     public AlbumController(AlbumRepository albumRepository) {
         this.albumRepository = albumRepository;
@@ -23,9 +22,9 @@ public class AlbumController {
         return (Collection<Album>) albumRepository.findAll();
     }
 
-    @RequestMapping("/album")
-    public java.util.Optional<Album> retrieveSingleAlbum(){
-        return albumRepository.findById(testAlbum.getId());
+    @RequestMapping("/albums/{id}")
+    public Album retrieveSingleAlbum(@PathVariable Long id){
+        return albumRepository.findById(id).get();
     }
 
 }
