@@ -40,7 +40,5 @@ public class Artist {
 
     public Collection<Song> getSongs() {
         return songs;
-
-
     }
 }
