@@ -61,7 +61,7 @@ public class AlbumControllerTest {
     }
 
     @Test
-    public void underTestIsWiredCorrectlyForSingleManufacturer() throws Exception {
+    public void underTestIsWiredCorrectlyForSingleAlbum() throws Exception {
         when(albumRepo.findById(1L)).thenReturn(Optional.of(testAlbum));
         mockMvc.perform(get("/albums/1/"))
                 .andExpect(status().isOk())
