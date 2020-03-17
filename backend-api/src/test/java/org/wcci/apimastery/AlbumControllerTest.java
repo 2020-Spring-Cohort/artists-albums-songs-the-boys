@@ -54,11 +54,12 @@ public class AlbumControllerTest {
           MockMvc mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
           mockMvc.perform(get("/albums"))
           .andExpect(status().isOk());
-
-
     }
 
-
-
-
+    @Test
+    public void retrieveAlbumReturnsSingleAlbum(){
+        underTest.retrieveSingleAlbum();
+        verify(albumRepo).findById(testAlbum.getId());
+    }
+    
 }
