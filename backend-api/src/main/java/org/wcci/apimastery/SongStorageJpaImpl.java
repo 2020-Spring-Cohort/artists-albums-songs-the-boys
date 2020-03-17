@@ -12,15 +12,18 @@ public class SongStorageJpaImpl implements SongStorage{
     public SongStorageJpaImpl(SongRepository songRepo){
         this.songRepo = songRepo;
     }
-@Override
+
+    @Override
     public Collection<Song> findAllSongs(){
         return (Collection<Song>) songRepo.findAll();
-}
-@Override
-public void store(Song song){
+    }
+
+    @Override
+    public void store(Song song){
         songRepo.save(song);
-}
-@Override
+    }
+
+    @Override
     public Song findSongByTitle(String songTitle) throws SongNotFoundException {
         Song retrievedSong;
             try{
@@ -30,6 +33,5 @@ public void store(Song song){
                 throw new SongNotFoundException(e.getMessage());
             }
             return retrievedSong;
-}
-
+    }
 }

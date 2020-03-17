@@ -47,8 +47,8 @@ public class JPAWiringTest {
        entityManager.clear();
        Artist retrievedArtist = artistRepo.findById(testArtist.getId()).get();
        Album retrievedAlbum1 = albumRepo.findById(testAlbum1.getId()).get();
-        Album retrievedAlbum2 = albumRepo.findById(testAlbum2.getId()).get();
-        assertThat(retrievedArtist.getAlbums()).contains(retrievedAlbum1, retrievedAlbum2);
+       Album retrievedAlbum2 = albumRepo.findById(testAlbum2.getId()).get();
+       assertThat(retrievedArtist.getAlbums()).contains(retrievedAlbum1, retrievedAlbum2);
 
     }
 
@@ -65,6 +65,7 @@ public class JPAWiringTest {
         Song retrievedSong2=songRepo.findById(testSong2.getId()).get();
         assertThat(retrievedAlbum.getSongs()).contains(retrievedSong, retrievedSong2);
     }
+
     @Test
     public void artistsShouldHaveSongs() {
         artistRepo.save(testArtist);

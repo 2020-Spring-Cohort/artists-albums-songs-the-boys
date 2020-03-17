@@ -12,7 +12,7 @@ public class SongController {
 
     private SongRepository songRepo;
 
-    SongController(SongRepository songRepo){
+    SongController(SongRepository songRepo) {
         this.songRepo = songRepo;
     }
 
@@ -20,13 +20,13 @@ public class SongController {
     public Collection<Song> retrieveSongs() {
         return (Collection<Song>) songRepo.findAll();
     }
-    @GetMapping("songs/{id}")
-    public Song displaySingleSong(@PathVariable Long id){
-        Song retrieveSong = songRepo.findById(id).get();
-            return retrieveSong;
-        }
 
+    @GetMapping("songs/{id}")
+    public Song displaySingleSong(@PathVariable Long id) {
+        Song retrieveSong = songRepo.findById(id).get();
+        return retrieveSong;
     }
+}
 
 
 

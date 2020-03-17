@@ -8,35 +8,29 @@ public class Song {
     @Id
     @GeneratedValue
     private Long id;
-    private String name;
+    private String title;
     private String duration;
+
     @ManyToOne
     private Artist artist;
     @ManyToOne
     private Album album;
 
-    protected Song(){
+    protected Song(){}
 
-    }
-
-
-
-    public Song(String name, String duration, Artist artist,Album album) {
-        this.name=name;
+    public Song(String title, String duration, Artist artist,Album album) {
+        this.title=title;
         this.duration=duration;
         this.artist=artist;
         this.album=album;
-
-
-
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public String getDuration(){

@@ -23,16 +23,16 @@ public class SongStorageImplTest {
         underTest = new SongStorageJpaImpl(songRepo);
         testArtist = new Artist("Test Artist");
         testAlbum = new Album("Test Album", testArtist);
-        testSong = new Song("Test Song", testArtist, testAlbum);
+        testSong = new Song("Test Song", "3:00", testArtist, testAlbum);
 
     }
+
     @Test
-    public void shouldBeAbleToFindAllSongs(){
+    public void shouldBeAbleToFindAllSongs() {
         when(songRepo.findAll()).thenReturn(Collections.singletonList(testSong));
         underTest.store(testSong);
-        verify(songRepo.save(testSong));
+        verify(songRepo).save(testSong);
         assertThat(underTest.findAllSongs()).contains(testSong);
-        }
-
     }
+}
 

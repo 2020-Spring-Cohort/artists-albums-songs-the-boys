@@ -12,6 +12,7 @@ public class Artist {
     @Id
     @GeneratedValue
     private Long id;
+
     @OneToMany(mappedBy = "artist")
     Collection<Album> albums;
     @OneToMany(mappedBy = "artist")
