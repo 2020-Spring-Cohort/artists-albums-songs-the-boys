@@ -27,14 +27,7 @@ public class SongStorageJpaImpl implements SongStorage{
     }
 
     @Override
-    public Song findSongByTitle(String songTitle) throws SongNotFoundException {
-        Song retrievedSong;
-            try{
-                retrievedSong = songRepo.findByTitle(songTitle).get();
-            }
-            catch (Exception e){
-                throw new SongNotFoundException(e.getMessage());
-            }
-            return retrievedSong;
+    public Song findSongById(long id) throws SongNotFoundException {
+       return songRepo.findById(id).get();
     }
 }
