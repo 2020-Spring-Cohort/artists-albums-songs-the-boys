@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.wcci.apimastery.Controllers.ArtistController;
+import org.wcci.apimastery.Entities.Artist;
+import org.wcci.apimastery.Storage.Repositories.ArtistRepository;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -42,7 +45,7 @@ public class ArtistControllerTest {
     @Test
     public void underTestIsWiredCorrectlyWithAnnotations() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
-        mockMvc.perform(get("/artists"))
+        mockMvc.perform(get("/artists/"))
                 .andExpect(status().isOk());
     }
 

@@ -7,6 +7,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.wcci.apimastery.Controllers.AlbumController;
+import org.wcci.apimastery.Entities.Album;
+import org.wcci.apimastery.Entities.Artist;
+import org.wcci.apimastery.Storage.Repositories.AlbumRepository;
 
 import java.util.Collection;
 import java.util.Collections;

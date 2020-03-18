@@ -2,10 +2,9 @@ package org.wcci.apimastery.Controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.wcci.apimastery.Song;
-import org.wcci.apimastery.SongRepository;
+import org.wcci.apimastery.Entities.Song;
+import org.wcci.apimastery.Storage.Repositories.SongRepository;
 
 import java.util.Collection;
 
@@ -14,16 +13,16 @@ public class SongController {
 
     private SongRepository songRepo;
 
-    SongController(SongRepository songRepo) {
+    public SongController(SongRepository songRepo) {
         this.songRepo = songRepo;
     }
 
-    @GetMapping("/songs")
+    @GetMapping("/songs/")
     public Collection<Song> retrieveSongs() {
         return (Collection<Song>) songRepo.findAll();
     }
 
-    @GetMapping("songs/{id}")
+    @GetMapping("/songs/{id}/")
     public Song displaySingleSong(@PathVariable Long id) {
         Song retrieveSong = songRepo.findById(id).get();
         return retrieveSong;

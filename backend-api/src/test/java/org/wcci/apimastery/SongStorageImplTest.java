@@ -2,6 +2,11 @@ package org.wcci.apimastery;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.wcci.apimastery.Entities.Album;
+import org.wcci.apimastery.Entities.Artist;
+import org.wcci.apimastery.Entities.Song;
+import org.wcci.apimastery.Storage.Repositories.SongRepository;
+import org.wcci.apimastery.Storage.SongStorageJpaImpl;
 
 import java.util.Collections;
 

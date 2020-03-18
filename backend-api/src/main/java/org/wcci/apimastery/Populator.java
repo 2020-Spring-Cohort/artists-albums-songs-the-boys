@@ -4,6 +4,12 @@ package org.wcci.apimastery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.wcci.apimastery.Entities.Album;
+import org.wcci.apimastery.Entities.Artist;
+import org.wcci.apimastery.Entities.Song;
+import org.wcci.apimastery.Storage.Repositories.AlbumRepository;
+import org.wcci.apimastery.Storage.Repositories.ArtistRepository;
+import org.wcci.apimastery.Storage.Repositories.SongRepository;
 
 @Component
 public class Populator implements CommandLineRunner {

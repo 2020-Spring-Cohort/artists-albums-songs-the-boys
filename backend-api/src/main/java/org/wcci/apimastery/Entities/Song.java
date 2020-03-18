@@ -1,4 +1,7 @@
-package org.wcci.apimastery;
+package org.wcci.apimastery.Entities;
+
+import org.wcci.apimastery.Entities.Album;
+import org.wcci.apimastery.Entities.Artist;
 
 import javax.persistence.*;
 
