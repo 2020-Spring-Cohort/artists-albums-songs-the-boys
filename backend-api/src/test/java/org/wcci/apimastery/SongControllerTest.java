@@ -19,7 +19,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class SongControllerTest {
 
@@ -40,7 +40,7 @@ public class SongControllerTest {
         testSong = new Song("Test Song", "3:00", testArtist, testAlbum);
         when(songRepo.findAll()).thenReturn(Collections.singletonList(testSong));
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
-
+        songStorage = mock(SongStorage.class);
     }
 
     @Test
@@ -62,11 +62,15 @@ public class SongControllerTest {
 
 
     }
-//
-//    @Test
-//    public void shouldGoToIndividualSongEndPoint() throws Exception{
-//        when(songRepo.findByTitle("Test Song"));
-//    }
+
+    @Test
+    public void addSongShouldAddNewSong() throws SongNotFoundException{
+        mockMvc.perform(post("/songs/"))
+                .param(testSong);
+
+        verify(songStorage).store(new Song("Test Song", "3:00", testArtist, testAlbum));
+
+    }
 
 
 }
