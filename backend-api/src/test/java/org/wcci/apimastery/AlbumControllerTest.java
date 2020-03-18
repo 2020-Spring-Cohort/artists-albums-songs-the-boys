@@ -58,8 +58,7 @@ public class AlbumControllerTest {
 
     @Test
 
-    public void controllerIsWiredCorrectly() throws Exception
-      {
+    public void controllerIsWiredCorrectly() throws Exception {
           mockMvc.perform(get("/albums"))
           .andExpect(status().isOk());
     }
@@ -71,5 +70,20 @@ public class AlbumControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.name", is("TestName")));
+    }
+
+    @Test
+    public void shouldBeAbleToAddAlbum() {
+       underTest.addAlbum(testAlbum);
+       Collection<Album> result= underTest.retrieveAlbums();
+       assertThat(result).contains(testAlbum);
+    }
+
+    @Test
+    public void shouldBeAbleToDeleteAlbum(){
+        underTest.addAlbum(testAlbum);
+        underTest.deleteAlbum(testAlbum.getId());
+        Collection<Album> result= underTest.retrieveAlbums();;
+        assertThat(result).doesNotContain(testAlbum);
     }
 }
