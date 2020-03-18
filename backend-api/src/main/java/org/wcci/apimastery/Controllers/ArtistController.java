@@ -1,9 +1,6 @@
 package org.wcci.apimastery.Controllers;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.wcci.apimastery.Entities.Album;
 import org.wcci.apimastery.Entities.Artist;
 import org.wcci.apimastery.Entities.Song;
@@ -48,6 +45,11 @@ public class ArtistController {
                 albumRepository.delete(albumToRemove);
         }
         artistRepository.deleteById(id);
+    }
+
+    @PostMapping("/artists/")
+    public Artist createArtist(@RequestBody Artist artistToAdd) {
+        return artistRepository.save(artistToAdd);
     }
 
 
