@@ -16,10 +16,10 @@ public class ArtistController {
     private AlbumRepository albumRepository;
     private SongRepository songRepository;
 
-    public ArtistController(ArtistRepository artistRepository,AlbumRepository albumRepository, SongRepository songRepository) {
+    public ArtistController(ArtistRepository artistRepository, AlbumRepository albumRepository, SongRepository songRepository) {
         this.artistRepository = artistRepository;
-        this.albumRepository= albumRepository;
-        this.songRepository= songRepository;
+        this.albumRepository = albumRepository;
+        this.songRepository = songRepository;
     }
 
     @GetMapping("/artists/")
@@ -35,14 +35,14 @@ public class ArtistController {
 
     @DeleteMapping("/artists/{id}/")
     public void deleteArtist(@PathVariable Long id) {
-        Artist artistToRemove= artistRepository.findById(id).get();
+        Artist artistToRemove = artistRepository.findById(id).get();
 
-        for (Album albumToRemove: artistToRemove.getAlbums()) {
-            for(Song songToRemove: albumToRemove.getSongs()) {
+        for (Album albumToRemove : artistToRemove.getAlbums()) {
+            for (Song songToRemove : albumToRemove.getSongs()) {
                 songRepository.delete(songToRemove);
             }
 
-                albumRepository.delete(albumToRemove);
+            albumRepository.delete(albumToRemove);
         }
         artistRepository.deleteById(id);
     }
@@ -52,7 +52,25 @@ public class ArtistController {
         return artistRepository.save(artistToAdd);
     }
 
+    @PatchMapping("/artists/{id}/albums/")
+    public Artist updateArtistAlbums(@PathVariable Long id, @RequestBody Album requestBodyAlbum) {
+        Artist artistToPatch = artistRepository.findById(id).get();
+        Album albumToAdd = new Album(requestBodyAlbum.getName(), artistToPatch);
+        albumRepository.save(albumToAdd);
+        return artistRepository.save(artistToPatch);
+    }
 
+
+    @PatchMapping("/artists/{id}/songs/")
+    public Artist updateArtistSongs(@PathVariable Long id, @RequestBody Song requestBodySong) {
+        Artist artistToPatch = artistRepository.findById(id).get();
+        Album albumToPatch = albumRepository.findById(id).get();
+        Song songToAdd = new Song(requestBodySong.getTitle(),requestBodySong.getDuration(),artistToPatch,albumToPatch);
+        songRepository.save(songToAdd);
+        return artistRepository.save(artistToPatch);
+
+
+    }
 
 }
 
