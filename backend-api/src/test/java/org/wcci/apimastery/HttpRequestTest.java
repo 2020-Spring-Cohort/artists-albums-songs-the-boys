@@ -22,21 +22,21 @@ public class HttpRequestTest {
     @Test
     public void songsEndpointReturnsOK(){
         ResponseEntity<String> response = testRestTemplate.getForEntity(
-                "http://localhost:" + port + "/songs", String.class);
+                "http://localhost:" + port + "/songs/", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test
     public void albumsEndpointReturnsOK(){
         ResponseEntity<String> response = testRestTemplate.getForEntity(
-                "http://localhost:" + port + "/albums", String.class);
+                "http://localhost:" + port + "/albums/", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test
     public void artistsEndpointReturnsOK(){
         ResponseEntity<String> response = testRestTemplate.getForEntity(
-                "http://localhost:" + port + "/artists", String.class);
+                "http://localhost:" + port + "/artists/", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 

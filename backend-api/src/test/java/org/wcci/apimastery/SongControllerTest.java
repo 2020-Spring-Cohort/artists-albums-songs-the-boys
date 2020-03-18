@@ -4,6 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.wcci.apimastery.Controllers.SongController;
+import org.wcci.apimastery.Entities.Album;
+import org.wcci.apimastery.Entities.Artist;
+import org.wcci.apimastery.Entities.Song;
+import org.wcci.apimastery.Storage.Repositories.SongRepository;
+import org.wcci.apimastery.Storage.SongStorage;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import java.util.Collection;
 import java.util.Collections;
@@ -50,7 +57,7 @@ public class SongControllerTest {
     @Test
     public void shouldGoToIndividualEndPoint() throws Exception, SongNotFoundException {
         when(songRepo.findById(1L)).thenReturn(Optional.of(testSong));
-        mockMvc.perform(get("/songs/1"))
+        mockMvc.perform(get("/songs/1/"))
                 .andExpect(status().isOk());
 
 

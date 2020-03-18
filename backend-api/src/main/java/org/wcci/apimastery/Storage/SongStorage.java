@@ -1,7 +1,9 @@
-package org.wcci.apimastery;
+package org.wcci.apimastery.Storage;
 
 
-import java.text.CollationElementIterator;
+import org.wcci.apimastery.Entities.Song;
+import org.wcci.apimastery.SongNotFoundException;
+
 import java.util.Collection;
 
 public interface SongStorage {

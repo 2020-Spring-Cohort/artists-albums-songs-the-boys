@@ -1,7 +1,10 @@
-package org.wcci.apimastery;
+package org.wcci.apimastery.Storage;
 
 
 import org.springframework.stereotype.Service;
+import org.wcci.apimastery.Entities.Song;
+import org.wcci.apimastery.SongNotFoundException;
+import org.wcci.apimastery.Storage.Repositories.SongRepository;
 
 import java.util.Collection;
 
