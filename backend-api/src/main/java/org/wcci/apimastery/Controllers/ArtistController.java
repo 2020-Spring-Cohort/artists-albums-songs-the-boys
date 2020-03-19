@@ -60,19 +60,6 @@ public class ArtistController {
         return artistRepository.save(artistToPatch);
     }
 
-
-    @PatchMapping("/artists/{id}/songs/")
-    public Artist updateArtistSongs(@PathVariable Long id,@RequestBody Album requestBodyAlbum, @RequestBody Song requestBodySong) {
-        Artist artistToPatch = artistRepository.findById(id).get();
-        Album albumToPatch = new Album(requestBodyAlbum.getName(), artistToPatch);
-        albumRepository.save(albumToPatch);
-        Song songToAdd = new Song(requestBodySong.getTitle(),requestBodySong.getDuration(),artistToPatch,albumToPatch);
-        songRepository.save(songToAdd);
-        return artistRepository.save(artistToPatch);
-
-
-    }
-
 }
 
 
