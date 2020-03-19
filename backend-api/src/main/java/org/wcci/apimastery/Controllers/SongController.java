@@ -31,8 +31,11 @@ public class SongController {
         return songRepo.save(songToAdd);
     }
 
-    
 
+    @DeleteMapping("/songs/{id}/")
+    public void deleteSong(@PathVariable Long id) {
+        songRepo.deleteById(id);
+    }
 }
 
 
