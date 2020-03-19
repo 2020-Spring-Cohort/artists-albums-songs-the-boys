@@ -1,5 +1,6 @@
 package org.wcci.apimastery.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.wcci.apimastery.Entities.Album;
 import org.wcci.apimastery.Entities.Artist;
 
@@ -14,8 +15,11 @@ public class Song {
     private String title;
     private String duration;
 
+    @JsonIgnore
     @ManyToOne
     private Artist artist;
+
+    @JsonIgnore
     @ManyToOne
     private Album album;
 

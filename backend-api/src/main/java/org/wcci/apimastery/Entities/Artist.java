@@ -9,6 +9,8 @@ import java.util.Collection;
 
 @Entity
 public class Artist {
+    private String name;
+
     @Id
     @GeneratedValue
     private Long id;
@@ -18,7 +20,7 @@ public class Artist {
     @OneToMany(mappedBy = "artist")
     private Collection<Song> songs;
 
-    private String name;
+
 
     protected Artist() {
     }

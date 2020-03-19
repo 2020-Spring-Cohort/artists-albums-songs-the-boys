@@ -6,7 +6,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.wcci.apimastery.Controllers.ArtistController;
 import org.wcci.apimastery.Entities.Artist;
+import org.wcci.apimastery.Storage.Repositories.AlbumRepository;
 import org.wcci.apimastery.Storage.Repositories.ArtistRepository;
+import org.wcci.apimastery.Storage.Repositories.SongRepository;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -20,11 +22,13 @@ public class ArtistControllerTest {
     private ArtistRepository artistRepository;
     private ArtistController underTest;
     private Artist testArtist;
+    private AlbumRepository albumRepository;
+    private SongRepository songRepository;
 
     @BeforeEach
     void setUp(){
         artistRepository = mock(ArtistRepository.class);
-        underTest = new ArtistController(artistRepository);
+        underTest = new ArtistController(artistRepository, albumRepository, songRepository);
         testArtist = new Artist("testArtist");
         when(artistRepository.findAll()).thenReturn(Collections.singletonList(testArtist));
         when(artistRepository.findById(2L)).thenReturn(java.util.Optional.ofNullable(testArtist));
