@@ -16,8 +16,9 @@ public class AlbumController {
     private AlbumRepository albumRepository;
     private SongRepository songRepository;
 
-    public AlbumController(AlbumRepository albumRepository) {
+    public AlbumController(AlbumRepository albumRepository, SongRepository songRepository) {
         this.albumRepository = albumRepository;
+        this.songRepository = songRepository;
     }
 
     @GetMapping("/albums/")

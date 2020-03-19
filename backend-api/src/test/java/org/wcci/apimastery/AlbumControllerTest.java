@@ -10,6 +10,7 @@ import org.wcci.apimastery.Controllers.AlbumController;
 import org.wcci.apimastery.Entities.Album;
 import org.wcci.apimastery.Entities.Artist;
 import org.wcci.apimastery.Storage.Repositories.AlbumRepository;
+import org.wcci.apimastery.Storage.Repositories.SongRepository;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -25,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AlbumControllerTest {
 
     private AlbumRepository albumRepo;
+    private SongRepository songRepo;
     private AlbumController underTest;
     private Artist testArtist;
     private Album testAlbum;
@@ -33,10 +35,11 @@ public class AlbumControllerTest {
     @BeforeEach
     void setUp() {
         albumRepo = mock(AlbumRepository.class);
-        underTest = new AlbumController(albumRepo);
+        underTest = new AlbumController(albumRepo, songRepo);
         testArtist = new Artist("Drake");
         testAlbum = new Album("TestName", testArtist);
         when(albumRepo.findAll()).thenReturn(Collections.singletonList(testAlbum));
+        when(albumRepo.findById(1L)).thenReturn(Optional.ofNullable(testAlbum));
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
     }
 
@@ -81,9 +84,7 @@ public class AlbumControllerTest {
 
     @Test
     public void shouldBeAbleToDeleteAlbum(){
-        underTest.addAlbum(testAlbum);
-        underTest.deleteAlbum(testAlbum.getId());
-        Collection<Album> result= underTest.retrieveAlbums();;
-        assertThat(result).doesNotContain(testAlbum);
+        underTest.deleteAlbum(1L);
+        verify(albumRepo).deleteById(1L);
     }
 }
