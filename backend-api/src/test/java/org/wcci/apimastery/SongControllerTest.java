@@ -2,6 +2,7 @@ package org.wcci.apimastery;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.wcci.apimastery.Controllers.SongController;
@@ -10,6 +11,7 @@ import org.wcci.apimastery.Entities.Artist;
 import org.wcci.apimastery.Entities.Song;
 import org.wcci.apimastery.Storage.Repositories.SongRepository;
 import org.wcci.apimastery.Storage.SongStorage;
+import static org.hamcrest.Matchers.is;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import java.util.Collection;
@@ -58,19 +60,33 @@ public class SongControllerTest {
     public void shouldGoToIndividualEndPoint() throws Exception, SongNotFoundException {
         when(songRepo.findById(1L)).thenReturn(Optional.of(testSong));
         mockMvc.perform(get("/songs/1/"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.title", is("Test Song")))
+                .andExpect(jsonPath("$.duration", is("3:00")));
 
 
+    }
+
+//    @Test
+//    public void addSongShouldAddNewSong() throws SongNotFoundException, Exception {
+//        mockMvc.perform(post("/songs/"))
+//
+//        verify(songStorage).store(new Song("Test Song", "3:00", testArtist, testAlbum));
+//
+//    }
+
+    @Test
+    public void deleteSongWillAskRepoToDelete(){
+        underTest.deleteSong(1L);
+        verify(songRepo).deleteById(1L);
     }
 
     @Test
-    public void addSongShouldAddNewSong() throws SongNotFoundException{
-        mockMvc.perform(post("/songs/"))
-                .param(testSong);
-
-        verify(songStorage).store(new Song("Test Song", "3:00", testArtist, testAlbum));
-
+    public void underTestIsWiredForDeleteRequest() throws Exception{
+        mockMvc.perform(delete("/songs/1/"))
+                .andExpect(status().isOk());
+        verify(songRepo).deleteById(1L);
     }
-
 
 }
