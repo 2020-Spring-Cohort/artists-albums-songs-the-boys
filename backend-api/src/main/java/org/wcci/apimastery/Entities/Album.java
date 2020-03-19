@@ -23,6 +23,12 @@ public class Album {
                 this.artist = artist;
         }
 
+        public Album(String name, Artist artist, Collection<Song> songs) {
+                this.name = name;
+                this.artist = artist;
+                this.songs = songs;
+        }
+
         protected Album(){
         }
 

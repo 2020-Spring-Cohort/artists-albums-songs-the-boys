@@ -9,12 +9,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.wcci.apimastery.Controllers.AlbumController;
 import org.wcci.apimastery.Entities.Album;
 import org.wcci.apimastery.Entities.Artist;
+import org.wcci.apimastery.Entities.Song;
 import org.wcci.apimastery.Storage.Repositories.AlbumRepository;
 import org.wcci.apimastery.Storage.Repositories.SongRepository;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
+import java.lang.reflect.Array;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -31,15 +31,20 @@ public class AlbumControllerTest {
     private Artist testArtist;
     private Album testAlbum;
     private MockMvc mockMvc;
+    private Song testSong;
 
     @BeforeEach
     void setUp() {
         albumRepo = mock(AlbumRepository.class);
+        songRepo = mock(SongRepository.class);
         underTest = new AlbumController(albumRepo, songRepo);
+        testSong = new Song("testTitle", "3", testArtist, testAlbum);
+        songRepo.save(testSong);
         testArtist = new Artist("Drake");
-        testAlbum = new Album("TestName", testArtist);
+        testAlbum = new Album("TestName", testArtist, Arrays.asList(testSong));
+        albumRepo.save(testAlbum);
         when(albumRepo.findAll()).thenReturn(Collections.singletonList(testAlbum));
-        when(albumRepo.findById(1L)).thenReturn(Optional.ofNullable(testAlbum));
+        when(albumRepo.findById(1L)).thenReturn(Optional.of(testAlbum));
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
     }
 
@@ -62,7 +67,7 @@ public class AlbumControllerTest {
     @Test
 
     public void controllerIsWiredCorrectly() throws Exception {
-          mockMvc.perform(get("/albums"))
+          mockMvc.perform(get("/albums/"))
           .andExpect(status().isOk());
     }
 
