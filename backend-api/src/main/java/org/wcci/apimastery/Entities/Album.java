@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Objects;
 
 
 @Entity
@@ -25,6 +26,12 @@ public class Album {
                 this.artist = artist;
         }
 
+        public Album(String name, Artist artist, Collection<Song> songs) {
+                this.name = name;
+                this.artist = artist;
+                this.songs = songs;
+        }
+
         protected Album(){
         }
 
@@ -43,5 +50,29 @@ public class Album {
 
         public Collection<Song> getSongs() {
                 return songs;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                Album album = (Album) o;
+                return Objects.equals(name, album.name) &&
+                        Objects.equals(id, album.id) &&
+                        Objects.equals(artist, album.artist);
+        }
+
+        @Override
+        public int hashCode() {
+                return Objects.hash(name, id, artist);
+        }
+
+        @Override
+        public String toString() {
+                return "Album{" +
+                        "name='" + name + '\'' +
+                        ", id=" + id +
+                        ", artist=" + artist +
+                        '}';
         }
 }
