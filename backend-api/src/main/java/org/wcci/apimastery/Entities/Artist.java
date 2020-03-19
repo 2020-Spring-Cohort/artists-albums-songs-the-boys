@@ -17,10 +17,6 @@ public class Artist {
 
     @OneToMany(mappedBy = "artist")
     Collection<Album> albums;
-    @OneToMany(mappedBy = "artist")
-    private Collection<Song> songs;
-
-
 
     protected Artist() {
     }
@@ -41,7 +37,4 @@ public class Artist {
         return name;
     }
 
-    public Collection<Song> getSongs() {
-        return songs;
-    }
 }
