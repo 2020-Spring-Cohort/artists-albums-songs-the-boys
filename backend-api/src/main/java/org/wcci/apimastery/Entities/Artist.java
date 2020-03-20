@@ -9,16 +9,14 @@ import java.util.Collection;
 
 @Entity
 public class Artist {
+    private String name;
+
     @Id
     @GeneratedValue
     private Long id;
 
     @OneToMany(mappedBy = "artist")
     Collection<Album> albums;
-    @OneToMany(mappedBy = "artist")
-    private Collection<Song> songs;
-
-    private String name;
 
     protected Artist() {
     }
@@ -39,7 +37,4 @@ public class Artist {
         return name;
     }
 
-    public Collection<Song> getSongs() {
-        return songs;
-    }
 }

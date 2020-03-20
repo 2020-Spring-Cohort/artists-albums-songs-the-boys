@@ -1,5 +1,6 @@
 package org.wcci.apimastery.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.wcci.apimastery.Entities.Album;
 import org.wcci.apimastery.Entities.Artist;
 
@@ -14,17 +15,15 @@ public class Song {
     private String title;
     private String duration;
 
-    @ManyToOne
-    private Artist artist;
+    @JsonIgnore
     @ManyToOne
     private Album album;
 
     protected Song(){}
 
-    public Song(String title, String duration, Artist artist,Album album) {
+    public Song(String title, String duration, Album album) {
         this.title=title;
         this.duration=duration;
-        this.artist=artist;
         this.album=album;
     }
 
@@ -38,10 +37,6 @@ public class Song {
 
     public String getDuration(){
         return duration;
-    }
-
-    public Artist getArtist() {
-        return artist;
     }
 
     public Album getAlbum() {
