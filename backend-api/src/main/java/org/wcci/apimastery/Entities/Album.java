@@ -20,6 +20,11 @@ public class Album {
         private Artist artist;
         @OneToMany (mappedBy = "album")
         private Collection<Song>songs;
+        @OneToMany (mappedBy = "album")
+        private Collection<Comment>comments;
+        @OneToMany (mappedBy = "album")
+        private Collection<Rating>ratings;
+
 
         public Album(String name, Artist artist){
                 this.name = name;
@@ -74,5 +79,13 @@ public class Album {
                         ", id=" + id +
                         ", artist=" + artist +
                         '}';
+        }
+
+        public Collection<Comment> getComments() {
+                return comments;
+        }
+
+        public Collection<Rating> getRatings() {
+                return ratings;
         }
 }
