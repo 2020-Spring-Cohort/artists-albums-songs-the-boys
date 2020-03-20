@@ -5,6 +5,7 @@ import org.wcci.apimastery.Entities.Album;
 import org.wcci.apimastery.Entities.Artist;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 
@@ -17,18 +18,17 @@ public class Song {
 
     @JsonIgnore
     @ManyToOne
-    private Artist artist;
-
-    @JsonIgnore
-    @ManyToOne
     private Album album;
+    @OneToMany (mappedBy = "song")
+    private Collection<Comment> comments;
+    @OneToMany (mappedBy = "song")
+    private Collection<Rating>ratings;
 
     protected Song(){}
 
-    public Song(String title, String duration, Artist artist,Album album) {
+    public Song(String title, String duration, Album album) {
         this.title=title;
         this.duration=duration;
-        this.artist=artist;
         this.album=album;
     }
 
@@ -44,14 +44,23 @@ public class Song {
         return duration;
     }
 
-    public Artist getArtist() {
-        return artist;
-    }
-
     public Album getAlbum() {
         return album;
     }
+
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public Collection<Rating> getRatings() {
+        return ratings;
+    }
 }
+
+
+
+
 
 
 

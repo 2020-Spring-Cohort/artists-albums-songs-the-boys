@@ -31,8 +31,8 @@ public class SongStorageImplTest {
         underTest = new SongStorageJpaImpl(songRepo);
         testArtist = new Artist("Test Artist");
         testAlbum = new Album("Test Album", testArtist);
-        testSong1 = new Song("Test Song", "3:00", testArtist, testAlbum);
-        testSong2 = new Song("Test Song 2", "3:30", testArtist, testAlbum);
+        testSong1 = new Song("Test Song", "3:00", testAlbum);
+        testSong2 = new Song("Test Song 2", "3:30", testAlbum);
 
 
     }
