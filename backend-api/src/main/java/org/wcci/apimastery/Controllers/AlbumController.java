@@ -44,5 +44,15 @@ public class AlbumController {
         }
         albumRepository.deleteById(id);
     }
+
+    @PatchMapping("/albums/{id}/songs/")
+    public Album updateAlbum(@PathVariable Long id, @RequestBody Song requestBodySong){
+        Album albumToUpdate = albumRepository.findById(id).get();
+        Song songToAdd = new Song(requestBodySong.getTitle(), requestBodySong.getDuration(), albumToUpdate.getArtist(), albumToUpdate);
+        songRepository.save(songToAdd);
+        return albumRepository.save(albumToUpdate);
+    }
+
+
 }
 
