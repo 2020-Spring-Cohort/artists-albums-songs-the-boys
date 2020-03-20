@@ -5,6 +5,7 @@ import org.wcci.apimastery.Entities.Album;
 import org.wcci.apimastery.Entities.Artist;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 
@@ -18,6 +19,10 @@ public class Song {
     @JsonIgnore
     @ManyToOne
     private Album album;
+    @OneToMany (mappedBy = "song")
+    private Collection<Comment> comments;
+    @OneToMany (mappedBy = "song")
+    private Collection<Rating>ratings;
 
     protected Song(){}
 
@@ -42,7 +47,20 @@ public class Song {
     public Album getAlbum() {
         return album;
     }
+
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public Collection<Rating> getRatings() {
+        return ratings;
+    }
 }
+
+
+
+
 
 
 
