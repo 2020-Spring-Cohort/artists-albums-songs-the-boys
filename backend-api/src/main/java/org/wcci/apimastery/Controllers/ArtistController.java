@@ -38,9 +38,6 @@ public class ArtistController {
         Artist artistToRemove = artistRepository.findById(id).get();
 
         for (Album albumToRemove : artistToRemove.getAlbums()) {
-            for (Song songToRemove : albumToRemove.getSongs()) {
-                songRepository.delete(songToRemove);
-            }
 
             albumRepository.delete(albumToRemove);
         }
