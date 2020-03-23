@@ -26,7 +26,7 @@ public class SongController {
         return retrieveSong;
     }
 
-    @PostMapping("/songs")
+    @PostMapping("/songs/")
     public Song addSong(@RequestBody Song songToAdd){
         return songRepo.save(songToAdd);
     }

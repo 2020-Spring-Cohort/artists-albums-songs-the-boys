@@ -40,7 +40,7 @@ public class Populator implements CommandLineRunner {
         Album theEndOfSilence = new Album("The End Of Silence", rollinsBand);
         albumRepository.save(theEndOfSilence);
         Album silence = albumRepository.findById(theEndOfSilence.getId()).get();
-        silence.addComment("I really like this a lot");
+//        silence.addComment("I really like this a lot");
         Album aNicerShadeOfRed = new Album("A Nicer Shade Of Red", rollinsBand);
         albumRepository.save(aNicerShadeOfRed);
         Album ricePasta = new Album("Rice, Pasta, and Other Fillers", porridgeRadio);

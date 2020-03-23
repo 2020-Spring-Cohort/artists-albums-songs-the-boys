@@ -1,10 +1,7 @@
 package org.wcci.apimastery.Entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -18,8 +15,8 @@ public class Artist {
     @OneToMany(mappedBy = "artist")
     Collection<Album> albums;
 
-    @OneToMany (mappedBy = "artist")
-    private Collection<Rating>ratings;
+    @ElementCollection
+    private Collection<Integer>ratings;
 
     protected Artist() {
     }
@@ -44,7 +41,7 @@ public class Artist {
 //        return comments;
 //    }
 
-    public Collection<Rating> getRatings() {
+    public Collection<Integer> getRatings() {
         return ratings;
     }
 }

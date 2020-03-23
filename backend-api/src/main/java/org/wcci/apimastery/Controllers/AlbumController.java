@@ -48,11 +48,15 @@ public class AlbumController {
     @PatchMapping("/albums/{id}/songs/")
     public Album updateAlbum(@PathVariable Long id, @RequestBody Song requestBodySong){
         Album albumToUpdate = albumRepository.findById(id).get();
-        Song songToAdd = new Song(requestBodySong.getTitle(), requestBodySong.getDuration(), albumToUpdate.getArtist(), albumToUpdate);
+        Song songToAdd = new Song(requestBodySong.getTitle(), requestBodySong.getDuration(), albumToUpdate);
         songRepository.save(songToAdd);
         return albumRepository.save(albumToUpdate);
     }
 
-
+    @PatchMapping("/albums/{id}/")
+    public void addCommentToAlbum(@PathVariable Long id, @RequestBody String commentToAdd) {
+        Album albumToUpdate = albumRepository.findById(id).get();
+        albumToUpdate.addComment(commentToAdd);
+    }
 }
 
