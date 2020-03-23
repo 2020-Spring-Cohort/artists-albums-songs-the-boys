@@ -18,8 +18,8 @@ public class Song {
     @ManyToOne
     private Album album;
 
-    @OneToMany (mappedBy = "song")
-    private Collection<Rating>ratings;
+    @ElementCollection
+    private Collection<Integer>ratings;
 
     protected Song(){}
 
@@ -50,7 +50,7 @@ public class Song {
 //        return comments;
 //    }
 
-    public Collection<Rating> getRatings() {
+    public Collection<Integer> getRatings() {
         return ratings;
     }
 }

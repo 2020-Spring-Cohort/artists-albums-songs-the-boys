@@ -21,8 +21,8 @@ public class Album {
         @OneToMany (mappedBy = "album")
         private Collection<Song>songs;
 
-        @OneToMany (mappedBy = "album")
-        private Collection<Rating>ratings;
+        @ElementCollection
+        private Collection<Integer>ratings;
 
         @ElementCollection
         private Collection<String> comments;
@@ -91,7 +91,7 @@ public class Album {
                 return comments;
         }
 
-        public Collection<Rating> getRatings() {
+        public Collection<Integer> getRatings() {
                 return ratings;
         }
 }
