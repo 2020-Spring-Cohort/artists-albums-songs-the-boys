@@ -1,8 +1,6 @@
 package org.wcci.apimastery.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.wcci.apimastery.Entities.Album;
-import org.wcci.apimastery.Entities.Artist;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -19,8 +17,7 @@ public class Song {
     @JsonIgnore
     @ManyToOne
     private Album album;
-    @OneToMany (mappedBy = "song")
-    private Collection<Comment> comments;
+
     @OneToMany (mappedBy = "song")
     private Collection<Rating>ratings;
 
@@ -49,9 +46,9 @@ public class Song {
     }
 
 
-    public Collection<Comment> getComments() {
-        return comments;
-    }
+//    public Collection<Comment> getComments() {
+//        return comments;
+//    }
 
     public Collection<Rating> getRatings() {
         return ratings;

@@ -20,10 +20,12 @@ public class Album {
         private Artist artist;
         @OneToMany (mappedBy = "album")
         private Collection<Song>songs;
-        @OneToMany (mappedBy = "album")
-        private Collection<Comment>comments;
+
         @OneToMany (mappedBy = "album")
         private Collection<Rating>ratings;
+
+        @ElementCollection
+        private Collection<String> comments;
 
 
         public Album(String name, Artist artist){
@@ -81,7 +83,11 @@ public class Album {
                         '}';
         }
 
-        public Collection<Comment> getComments() {
+        public void addComment(String commentToAdd){
+                comments.add(commentToAdd);
+        }
+
+        public Collection<String> getComments() {
                 return comments;
         }
 

@@ -38,7 +38,7 @@ public class AlbumControllerTest {
         albumRepo = mock(AlbumRepository.class);
         songRepo = mock(SongRepository.class);
         underTest = new AlbumController(albumRepo, songRepo);
-        testSong = new Song("testTitle", "3", testArtist, testAlbum);
+        testSong = new Song("testTitle", "3", testAlbum);
         songRepo.save(testSong);
         testArtist = new Artist("Drake");
         testAlbum = new Album("TestName", testArtist, Arrays.asList(testSong));
