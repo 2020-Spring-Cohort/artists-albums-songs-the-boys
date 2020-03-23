@@ -17,6 +17,7 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 public class AlbumControllerTest {
     private AlbumRepository albumRepo;
     private SongRepository songRepo;
@@ -25,6 +26,7 @@ public class AlbumControllerTest {
     private Album testAlbum;
     private MockMvc mockMvc;
     private Song testSong;
+
     @BeforeEach
     void setUp() {
         albumRepo = mock(AlbumRepository.class);
@@ -32,28 +34,32 @@ public class AlbumControllerTest {
         underTest = new AlbumController(albumRepo, songRepo);
         testArtist = new Artist("Drake");
         testAlbum = new Album("TestName", testArtist, Arrays.asList(testSong));
-        testSong = new Song("testTitle", "3", testArtist, testAlbum);
+        testSong = new Song("testTitle", "3", testAlbum);
         songRepo.save(testSong);
         albumRepo.save(testAlbum);
         when(albumRepo.findAll()).thenReturn(Collections.singletonList(testAlbum));
         when(albumRepo.findById(1L)).thenReturn(Optional.of(testAlbum));
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
     }
+
     @Test
     public void retrieveAlbumsReturnsListOfAlbums() {
         underTest.retrieveAlbums();
         verify(albumRepo).findAll();
     }
+
     @Test
     public void retrieveAlbumsReturnsListOfAlbumsContainingMockAlbums() {
         Collection<Album> result= underTest.retrieveAlbums();
         assertThat(result).contains(testAlbum);
     }
+
     @Test
     public void controllerIsWiredCorrectly() throws Exception {
         mockMvc.perform(get("/albums/"))
                 .andExpect(status().isOk());
     }
+
     @Test
     public void underTestIsWiredCorrectlyForSingleAlbum() throws Exception {
         when(albumRepo.findById(1L)).thenReturn(Optional.of(testAlbum));
@@ -62,17 +68,20 @@ public class AlbumControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.name", is("TestName")));
     }
+
     @Test
     public void shouldBeAbleToAddAlbum() {
         underTest.addAlbum(testAlbum);
         Collection<Album> result= underTest.retrieveAlbums();
         assertThat(result).contains(testAlbum);
     }
+
     @Test
     public void shouldBeAbleToDeleteAlbum(){
         underTest.deleteAlbum(1L);
         verify(albumRepo).deleteById(1L);
     }
+
 //    @Test
 //    public void shouldBeAbleToAddSongToAlbum(){
 //        underTest.updateAlbum(testAlbum.getId(), testSong);
@@ -80,9 +89,11 @@ public class AlbumControllerTest {
 //        verify(retrievedSongs).contains(testSong);
 //    }
     //test isn't passing but code seems to be working on Postman- no value present error at line 98
+
+    @Test
+    public void shouldBeAbleToAddCommentToAlbum(){
+        underTest.addCommentToAlbum(testAlbum.getId(),"test comment");
+        Collection<String> result = testAlbum.getComments();
+        assertThat(result).contains("test comment");
+    }
 }
-
-
-
-
-
