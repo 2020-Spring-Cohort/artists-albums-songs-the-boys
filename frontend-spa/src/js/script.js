@@ -61,12 +61,19 @@ const displayArtists = (artists) => {
         .changeContent('List of artists');
 
     artists.forEach((artist) => {
-        artistList.appendChild(new DomMaker('a')
+        artistList.appendChild(new DomMaker('li')
             .changeContent(artist.name)
+            .addOnClickAction(fetchAlbumsByArtist)
             .render())
     });
 
     artistListAnchorElement.append(artistList.render());
+}
+
+function fetchAlbumsByArtist(){
+    fetch('http://localhost:8080/albums/')
+    .then(response => response.json())
+    .then(artists => displayArtists(artists));
 }
 
 
