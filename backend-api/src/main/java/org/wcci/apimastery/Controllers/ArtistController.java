@@ -32,11 +32,6 @@ public class ArtistController {
         return artistRepository.findById(id).get();
     }
 
-    @GetMapping("/artists/{id}/albums")
-    public Collection<Album> retrieveAlbumsBySingleArtist(@PathVariable Long id) {
-        return albumRepository.findAlbumsByArtist(artistRepository.findById(id).get());
-    }
-
     @DeleteMapping("/artists/{id}/")
     public void deleteArtist(@PathVariable Long id) {
         Artist artistToRemove = artistRepository.findById(id).get();
