@@ -3,7 +3,7 @@ import {
 } from './DomMaker.js'
 
 
-const anchorElement = document.querySelector('.anchor');
+const anchorElement = document.querySelector('.artist-section');
 
 const displayArtists = (artists) => {
     anchorElement.innerHTML='';

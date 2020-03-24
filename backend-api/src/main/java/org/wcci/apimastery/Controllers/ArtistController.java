@@ -32,6 +32,7 @@ public class ArtistController {
         return artistRepository.findById(id).get();
     }
 
+    
 
     @DeleteMapping("/artists/{id}/")
     public void deleteArtist(@PathVariable Long id) {
