@@ -78,10 +78,14 @@
     // fetchAllArtists();
 
 const artistListAnchorElement = document.querySelector('.artistListAnchor');
-const albumListAnchorElement = document.querySelector('.albumListAnchor')
+const albumListAnchorElement = document.querySelector('.albumListAnchor');
+const songListAnchorElement = document.querySelector('.songListAnchor');
 
 const artistsPromise = fetch('http://localhost:8080/artists/')
                         .then(response => response.json());
+
+// const albumsPromise = fetch('http://localhost:8080/albums/')
+//                         .then(response => response.json());
 
 const renderArtistsView = (artists) =>{
     const title = document.createElement('h2');
@@ -119,13 +123,44 @@ const renderAlbumListView = (artist) =>{
         const albumElement = document.createElement('li');
         albumElement.innerText = album.name;
         albumsList.appendChild(albumElement);
+
+        albumElement.addEventListener('click', ()=>{
+            renderSongListView(album);
+        })
     })
     albumListAnchorElement.appendChild(mainElement);
+
+
+}
+
+const renderSongListView = (album) =>{
+    while(songListAnchorElement.firstChild){
+        songListAnchorElement.removeChild(songListAnchorElement.firstChild);
+    }
+    const mainElement = document.createElement('div');
+    const title = document.createElement('h2');
+    title.innerText = "Songs"
+    mainElement.appendChild(title);
+    const albumName = document.createElement('h3');
+    albumName.innerText = album.name;
+    mainElement.appendChild(albumName);
+    const songsList = document.createElement('ul');
+    mainElement.appendChild(songsList);
+    album.songs.forEach(song=>{
+        const songElement = document.createElement('li');
+        songElement.innerText = song.title;
+        songsList.appendChild(songElement);
+    })
+    songListAnchorElement.appendChild(mainElement);
 }
 
 artistsPromise
     .then(promiseValue => renderArtistsView(promiseValue))
     .then(element =>artistListAnchorElement.appendChild(element))
+
+// albumsPromise
+//     .then(promiseValue => renderAlbumsView(promiseValue))
+//     .then(element => albumListAnchorElement.appendChild(element))
 
 
 
