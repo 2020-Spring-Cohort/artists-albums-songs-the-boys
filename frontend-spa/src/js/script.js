@@ -96,7 +96,6 @@ const renderArtistsView = (artists) =>{
         mainElement.appendChild(artistName);
 
         artistName.addEventListener('click', ()=>{
-            console.log(artist)
             renderAlbumListView(artist);
         })
     })
@@ -107,7 +106,6 @@ const renderAlbumListView = (artist) =>{
     while(albumListAnchorElement.firstChild){
         albumListAnchorElement.removeChild(albumListAnchorElement.firstChild);
     }
-    console.log(albumListAnchorElement.firstChild)
     const mainElement = document.createElement('div');
     const title = document.createElement('h2')
     title.innerText = "Albums"
