@@ -1,82 +1,3 @@
-// class DomMaker {
-
-//     constructor(elementType) {
-//         this.htmlElement = document.createElement(elementType);
-//     }
-
-//     appendChild(element) {
-//         this.htmlElement.append(element);
-//         return this;
-//     }
-
-//     changeContent(newContent) {
-//         this.htmlElement.innerText = newContent;
-//         return this;
-//     }
-
-//     render() {
-//         return this.htmlElement;
-//     }
-
-//     addClassName(className){
-//         this.htmlElement.classList.add(className)
-//         return this;
-//     }
-
-//     addOnClickAction(functionToRun){
-//         this.htmlElement.addEventListener('click', (event)=>{
-//             event.preventDefault();
-//             functionToRun();
-//         })
-//         return this;
-//     }
-// }
-
-// class InputMaker extends DomMaker{
-
-//     constructor(){
-//         super('input');
-//     }
-//     changeInputType(type){
-//         this.htmlElement.setAttribute('type',type);
-//         return this;
-//     }
-//     addPlaceholder(placeholder){
-//         this.htmlElement.setAttribute('placeholder',placeholder);
-//         return this;
-//     }
-// }
-
-// const fetchAllArtists = () => {
-//     fetch('http://localhost:8080/artists/')
-//         .then(response => response.json())
-//         .then(artists => displayArtists(artists));
-// }
-
-// const displayArtists = (artists) => {
-//     artistListAnchorElement.innerHTML='';
-//     let artistList = new DomMaker('ul')
-//         .changeContent('List of artists');
-
-//     artists.forEach((artist) => {
-//         artistList.appendChild(new DomMaker('li')
-//             .changeContent(artist.name)
-//             .addOnClickAction(fetchAlbumsByArtist(artist.id))
-//             .render())
-//     });
-
-//     artistListAnchorElement.append(artistList.render());
-// }
-
-// function fetchAlbumsByArtist(id){
-//     fetch(`http://localhost:8080/artists/${id}/`)
-//     .then(response => response.json())
-//     .then(artists => console.log(artists));
-// }
-
-
-    // fetchAllArtists();
-
 const artistListAnchorElement = document.querySelector('.artistListAnchor');
 const albumListAnchorElement = document.querySelector('.albumListAnchor');
 const songListAnchorElement = document.querySelector('.songListAnchor');
@@ -84,8 +5,6 @@ const songListAnchorElement = document.querySelector('.songListAnchor');
 const artistsPromise = fetch('http://localhost:8080/artists/')
                         .then(response => response.json());
 
-// const albumsPromise = fetch('http://localhost:8080/albums/')
-//                         .then(response => response.json());
 
 const renderArtistsView = (artists) =>{
     const title = document.createElement('h2');
@@ -150,17 +69,31 @@ const renderSongListView = (album) =>{
         const songElement = document.createElement('li');
         songElement.innerText = song.title;
         songsList.appendChild(songElement);
+
+        songElement.addEventListener('click', ()=>{
+            renderSingleSongView(song);
+        })
     })
+    songListAnchorElement.appendChild(mainElement);
+}
+
+const renderSingleSongView = (song) =>{
+    while(songListAnchorElement.firstChild){
+        songListAnchorElement.removeChild(songListAnchorElement.firstChild);
+    }
+    const mainElement = document.createElement('div');
+    const title = document.createElement('h2');
+    title.innerText = song.title;
+    mainElement.appendChild(title);
+    const songDuration = document.createElement('h3');
+    songDuration.innerText = "Duration: " + song.duration;
+    mainElement.appendChild(songDuration);
     songListAnchorElement.appendChild(mainElement);
 }
 
 artistsPromise
     .then(promiseValue => renderArtistsView(promiseValue))
     .then(element =>artistListAnchorElement.appendChild(element))
-
-// albumsPromise
-//     .then(promiseValue => renderAlbumsView(promiseValue))
-//     .then(element => albumListAnchorElement.appendChild(element))
 
 
 
