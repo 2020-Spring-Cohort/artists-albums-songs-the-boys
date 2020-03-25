@@ -30,7 +30,7 @@ public class SongStorageImplTest {
         songRepo = mock(SongRepository.class);
         underTest = new SongStorageJpaImpl(songRepo);
         testArtist = new Artist("Test Artist");
-        testAlbum = new Album("Test Album", testArtist);
+        testAlbum = new Album("Test Album", testArtist, "testImage");
         testSong1 = new Song("Test Song", "3:00", testAlbum);
         testSong2 = new Song("Test Song 2", "3:30", testAlbum);
 
