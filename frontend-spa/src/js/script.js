@@ -91,6 +91,7 @@ const renderSingleSongView = (song) =>{
     songListAnchorElement.appendChild(mainElement);
 }
 
+
 artistsPromise
     .then(promiseValue => renderArtistsView(promiseValue))
     .then(element =>artistListAnchorElement.appendChild(element))
