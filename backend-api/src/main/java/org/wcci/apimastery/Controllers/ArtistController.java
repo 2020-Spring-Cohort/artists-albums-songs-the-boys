@@ -51,7 +51,7 @@ public class ArtistController {
     @PatchMapping("/artists/{id}/albums/")
     public Artist updateArtistAlbums(@PathVariable Long id, @RequestBody Album requestBodyAlbum) {
         Artist artistToPatch = artistRepository.findById(id).get();
-        Album albumToAdd = new Album(requestBodyAlbum.getName(), artistToPatch);
+        Album albumToAdd = new Album(requestBodyAlbum.getName(), artistToPatch, requestBodyAlbum.getImagePath());
         albumRepository.save(albumToAdd);
         return artistRepository.save(artistToPatch);
     }

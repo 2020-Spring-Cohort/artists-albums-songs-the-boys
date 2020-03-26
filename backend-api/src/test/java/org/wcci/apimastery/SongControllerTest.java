@@ -38,7 +38,7 @@ public class SongControllerTest {
         songRepo = mock(SongRepository.class);
         underTest = new SongController(songRepo);
         testArtist = new Artist("Test Artist");
-        testAlbum = new Album("Test Album", testArtist);
+        testAlbum = new Album("Test Album", testArtist, "testImage");
         testSong = new Song("Test Song", "3:00", testAlbum);
         when(songRepo.findAll()).thenReturn(Collections.singletonList(testSong));
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();

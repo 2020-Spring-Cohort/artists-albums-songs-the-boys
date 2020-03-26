@@ -11,6 +11,7 @@ import java.util.Objects;
 public class Album {
 
         private String name;
+        private String imagePath;
         @Id
         @GeneratedValue
         private Long id;
@@ -29,9 +30,10 @@ public class Album {
         private Collection<String> comments;
 
 
-        public Album(String name, Artist artist){
+        public Album(String name, Artist artist, String imagePath){
                 this.name = name;
                 this.artist = artist;
+                this.imagePath = imagePath;
         }
 
         public Album(String name, Artist artist, Collection<Song> songs) {
@@ -46,6 +48,10 @@ public class Album {
 
         public String getName() {
                 return name;
+        }
+
+        public String getImagePath(){
+                return imagePath;
         }
 
         public Long getId() {
