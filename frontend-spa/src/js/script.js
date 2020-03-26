@@ -2,11 +2,21 @@ const artistListAnchorElement = document.querySelector('.artistListAnchor');
 const albumListAnchorElement = document.querySelector('.albumListAnchor');
 const songListAnchorElement = document.querySelector('.songListAnchor');
 
-const artistsPromise = fetch('http://localhost:8080/artists/')
-                        .then(response => response.json());
+
+
+const getAllArtists = () => {
+    fetch('http://localhost:8080/artists/')
+         .then(response => response.json())
+         .then(artistsJson => renderArtistsView(artistsJson))
+         .then(console.log("getAllArtists Ran"));
+}
 
 
 const renderArtistsView = (artists) =>{
+    while(artistListAnchorElement.firstChild){
+        artistListAnchorElement.removeChild(artistListAnchorElement.firstChild);
+    }
+    console.log("renderArtistsView ran")
     const title = document.createElement('h2');
     title.innerText = 'Artists';
     const mainElement = document.createElement('div');
@@ -22,7 +32,7 @@ const renderArtistsView = (artists) =>{
             renderAlbumListView(artist);
         })
     })
-    return mainElement
+    artistListAnchorElement.appendChild(mainElement);
 }
 
 const renderAlbumListView = (artist) =>{
@@ -119,9 +129,43 @@ const renderSingleSongView = (song) =>{
 }
 
 
-artistsPromise
-    .then(promiseValue => renderArtistsView(promiseValue))
-    .then(element =>artistListAnchorElement.appendChild(element))
 
+getAllArtists();
 
+    const addNewArtist = () => {
+        const artistName = document.querySelector(".artist-name");
 
+        const newArtistJson = {
+            "name": artistName.value
+        }
+   
+        fetch("http://localhost:8080/artists/", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newArtistJson)
+        })
+        .then(response => response.json())
+        .then(artist => artist.id)
+        .then(artistId => addNewAlbum(artistId))
+        .then(()=> getAllArtists())
+    }
+
+    const addNewAlbum = (newArtist) =>{
+        const albumName = document.querySelector(".album-name").value;
+
+        const newAlbumJson = {
+            "name": albumName
+        }
+
+        fetch("http://localhost:8080/artists/" + newArtist + "/albums/", {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newAlbumJson)
+        })
+        .then(stuff => console.log(stuff.json))
+        getAllArtists();
+    }
