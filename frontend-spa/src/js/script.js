@@ -12,6 +12,8 @@ const getAllArtists = () => {
 }
 
 
+
+
 const renderArtistsView = (artists) =>{
     while(artistListAnchorElement.firstChild){
         artistListAnchorElement.removeChild(artistListAnchorElement.firstChild);
@@ -128,9 +130,30 @@ const renderSingleSongView = (song) =>{
     songListAnchorElement.appendChild(mainElement);
 }
 
+const submitButton = document.querySelector(".submit-button")
+const addSongButton = document.querySelector(".add-song-button")
 
+submitButton.addEventListener("click", ()=>{
+    submitForm();
+    event.preventDefault();
+})
 
-getAllArtists();
+addSongButton.addEventListener("click", ()=>{
+    addNewSongInput();
+    event.preventDefault();
+
+})
+
+const addNewSongInput = ()=>{
+    const inputAnchor = document.querySelector(".input-col-right")
+    const newInput = document.createElement('div')
+    newInput.innerHTML = `
+    <label for="song-name">Song Title</label>
+    <input class="song-name" type="text" name="songname">
+    `
+    inputAnchor.appendChild(newInput)
+}
+const submitForm = () =>{
 
     const addNewArtist = () => {
         const artistName = document.querySelector(".artist-name");
@@ -138,7 +161,7 @@ getAllArtists();
         const newArtistJson = {
             "name": artistName.value
         }
-   
+        console.log("fetching artist POST")
         fetch("http://localhost:8080/artists/", {
             method: "POST",
             headers: {
@@ -147,25 +170,59 @@ getAllArtists();
             body: JSON.stringify(newArtistJson)
         })
         .then(response => response.json())
-        .then(artist => artist.id)
-        .then(artistId => addNewAlbum(artistId))
+        .then(artist => addNewAlbum(artist.id))
         .then(()=> getAllArtists())
     }
 
+
     const addNewAlbum = (newArtist) =>{
-        const albumName = document.querySelector(".album-name").value;
+        console.log("Artist id: " + newArtist)
+        const albumName = document.querySelector(".album-name");
 
         const newAlbumJson = {
-            "name": albumName
+            "name": albumName.value,
+            "imagePath": "https://i.picsum.photos/id/825/200/300.jpg"
         }
-
-        fetch("http://localhost:8080/artists/" + newArtist + "/albums/", {
+        console.log("fetching album PATCH")
+        fetch(`http://localhost:8080/artists/${newArtist}/albums/`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newAlbumJson)
         })
-        .then(stuff => console.log(stuff.json))
-        getAllArtists();
+        .then(response => response.json())
+        .then(album => addNewSong(album.id))
     }
+
+    const addNewSong = (newAlbum) =>{
+        console.log("Album id: " + newAlbum)
+        console.log(newAlbum)
+        const songNameList = document.querySelectorAll('.song-name')
+
+        songNameList.forEach(song => {
+            const newSongJson = {
+                "title": song.value,
+                "duration": "4:21"
+            }
+            console.log(newSongJson)
+            fetch(`http://localhost:8080/albums/${newAlbum}/songs/`, {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newSongJson)
+            })
+            .then(response => response.json)
+            
+        })
+        getAllArtists()
+    }
+    addNewArtist()
+    console.log("Submitform fired")
+}
+
+    getAllArtists();
+
+
+
