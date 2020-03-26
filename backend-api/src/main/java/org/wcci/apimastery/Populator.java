@@ -39,7 +39,7 @@ public class Populator implements CommandLineRunner {
 
         Album theEndOfSilence = new Album("The End Of Silence", rollinsBand, "https://upload.wikimedia.org/wikipedia/en/b/b5/Rollins_Band_-_The_End_of_Silence.jpg");
         albumRepository.save(theEndOfSilence);
-        Album aNicerShadeOfRed = new Album("A Nicer Shade Of Red", rollinsBand, "https://en.wikipedia.org/wiki/A_Nicer_Shade_of_Red#/media/File:Rollins_Red.jpg");
+        Album aNicerShadeOfRed = new Album("A Nicer Shade Of Red", rollinsBand, "https://upload.wikimedia.org/wikipedia/en/f/fb/Rollins_Red.jpg");
         albumRepository.save(aNicerShadeOfRed);
         Album ricePasta = new Album("Rice, Pasta, and Other Fillers", porridgeRadio, "https://f4.bcbits.com/img/a4286212805_16.jpg");
         albumRepository.save(ricePasta);
