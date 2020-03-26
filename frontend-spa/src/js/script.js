@@ -12,6 +12,8 @@ const getAllArtists = () => {
 }
 
 
+
+
 const renderArtistsView = (artists) =>{
     while(artistListAnchorElement.firstChild){
         artistListAnchorElement.removeChild(artistListAnchorElement.firstChild);
@@ -129,8 +131,7 @@ const renderSingleSongView = (song) =>{
 }
 
 
-
-getAllArtists();
+const submitForm = () =>{
 
     const addNewArtist = () => {
         const artistName = document.querySelector(".artist-name");
@@ -147,16 +148,15 @@ getAllArtists();
             body: JSON.stringify(newArtistJson)
         })
         .then(response => response.json())
-        .then(artist => artist.id)
-        .then(artistId => addNewAlbum(artistId))
-        .then(()=> getAllArtists())
+        .then(artist => addNewAlbum(artist.id))
     }
 
+
     const addNewAlbum = (newArtist) =>{
-        const albumName = document.querySelector(".album-name").value;
+        const albumName = document.querySelector(".album-name");
 
         const newAlbumJson = {
-            "name": albumName
+            "name": albumName.value
         }
         console.log("fetching album PATCH")
         fetch(`http://localhost:8080/artists/${newArtist}/albums/`, {
@@ -166,12 +166,13 @@ getAllArtists();
             },
             body: JSON.stringify(newAlbumJson)
         })
-        .then(stuff => console.log(stuff.json))
-        .then(addNewSong(album => album.id))
-       
+        .then(response => response.json())
+        .then(album => addNewSong(album.id))
     }
 
     const addNewSong = (newAlbum) =>{
+
+        console.log(newAlbum)
         const songNameList = document.querySelectorAll('.song-name')
 
         songNameList.forEach(song => {
@@ -179,7 +180,7 @@ getAllArtists();
                 "title": song.value,
                 "duration": "17"
             }
-    
+            console.log(newSongJson)
             fetch(`http://localhost:8080/albums/${newAlbum}/songs/`, {
                 method: "PATCH",
                 headers: {
@@ -188,6 +189,14 @@ getAllArtists();
                 body: JSON.stringify(newSongJson)
             })
             .then(response => response.json)
-            .then(() => getAllArtists())
         })
     }
+    addNewArtist()
+
+}
+
+window.onload = ()=>{
+    getAllArtists();
+
+}
+
