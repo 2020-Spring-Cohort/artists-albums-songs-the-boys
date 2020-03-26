@@ -130,7 +130,29 @@ const renderSingleSongView = (song) =>{
     songListAnchorElement.appendChild(mainElement);
 }
 
+const submitButton = document.querySelector(".submit-button")
+const addSongButton = document.querySelector(".add-song-button")
 
+submitButton.addEventListener("click", ()=>{
+    submitForm();
+    event.preventDefault();
+})
+
+addSongButton.addEventListener("click", ()=>{
+    addNewSongInput();
+    event.preventDefault();
+
+})
+
+const addNewSongInput = ()=>{
+    const inputAnchor = document.querySelector(".input-col-right")
+    const newInput = document.createElement('div')
+    newInput.innerHTML = `
+    <label for="song-name">Song Title</label>
+    <input class="song-name" type="text" name="songname">
+    `
+    inputAnchor.appendChild(newInput)
+}
 const submitForm = () =>{
 
     const addNewArtist = () => {
@@ -149,14 +171,17 @@ const submitForm = () =>{
         })
         .then(response => response.json())
         .then(artist => addNewAlbum(artist.id))
+        .then(()=> getAllArtists())
     }
 
 
     const addNewAlbum = (newArtist) =>{
+        console.log("Artist id: " + newArtist)
         const albumName = document.querySelector(".album-name");
 
         const newAlbumJson = {
-            "name": albumName.value
+            "name": albumName.value,
+            "imagePath": "https://i.picsum.photos/id/825/200/300.jpg"
         }
         console.log("fetching album PATCH")
         fetch(`http://localhost:8080/artists/${newArtist}/albums/`, {
@@ -171,14 +196,14 @@ const submitForm = () =>{
     }
 
     const addNewSong = (newAlbum) =>{
-
+        console.log("Album id: " + newAlbum)
         console.log(newAlbum)
         const songNameList = document.querySelectorAll('.song-name')
 
         songNameList.forEach(song => {
             const newSongJson = {
                 "title": song.value,
-                "duration": "17"
+                "duration": "4:21"
             }
             console.log(newSongJson)
             fetch(`http://localhost:8080/albums/${newAlbum}/songs/`, {
@@ -189,14 +214,15 @@ const submitForm = () =>{
                 body: JSON.stringify(newSongJson)
             })
             .then(response => response.json)
+            
         })
+        getAllArtists()
     }
     addNewArtist()
-
+    console.log("Submitform fired")
 }
 
-window.onload = ()=>{
     getAllArtists();
 
-}
+
 
