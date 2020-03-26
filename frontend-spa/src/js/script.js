@@ -138,7 +138,7 @@ getAllArtists();
         const newArtistJson = {
             "name": artistName.value
         }
-   
+        console.log("fetching artist POST")
         fetch("http://localhost:8080/artists/", {
             method: "POST",
             headers: {
@@ -158,8 +158,8 @@ getAllArtists();
         const newAlbumJson = {
             "name": albumName
         }
-
-        fetch("http://localhost:8080/artists/" + newArtist + "/albums/", {
+        console.log("fetching album PATCH")
+        fetch(`http://localhost:8080/artists/${newArtist}/albums/`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json'
@@ -167,5 +167,27 @@ getAllArtists();
             body: JSON.stringify(newAlbumJson)
         })
         .then(stuff => console.log(stuff.json))
-        getAllArtists();
+        .then(addNewSong(album => album.id))
+       
+    }
+
+    const addNewSong = (newAlbum) =>{
+        const songNameList = document.querySelectorAll('.song-name')
+
+        songNameList.forEach(song => {
+            const newSongJson = {
+                "title": song.value,
+                "duration": "17"
+            }
+    
+            fetch(`http://localhost:8080/albums/${newAlbum}/songs/`, {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newSongJson)
+            })
+            .then(response => response.json)
+            .then(() => getAllArtists())
+        })
     }
