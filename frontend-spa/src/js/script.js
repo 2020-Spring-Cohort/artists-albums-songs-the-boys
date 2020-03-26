@@ -45,10 +45,37 @@ const renderAlbumListView = (artist) =>{
 
         albumElement.addEventListener('click', ()=>{
             renderSongListView(album);
+            console.log("renderSongListView fires.")
+            renderSingleAlbumView(album);
+            console.log("renderSingleAlbumView fires.")
+           
+            
         })
     })
     albumListAnchorElement.appendChild(mainElement);
 
+
+}
+
+const renderSingleAlbumView = (album) =>{
+    while(albumListAnchorElement.firstChild){
+        albumListAnchorElement.removeChild(albumListAnchorElement.firstChild);
+    }
+    const mainElement = document.createElement('div');
+    const title = document.createElement('h2')
+    title.innerText = "Albums"
+    mainElement.appendChild(title);
+    // const artistName = document.createElement('h3');
+    // artistName.innerText = artist.name;
+    // mainElement.appendChild(artistName);
+    const albumName = document.createElement('h4');
+    albumName.innerText = album.name;
+    mainElement.appendChild(albumName);
+    const albumImage = document.createElement('IMG');
+    const url = album.imagePath;
+    albumImage.src = url;
+    mainElement.appendChild(albumImage);
+    albumListAnchorElement.appendChild(mainElement);
 
 }
 
