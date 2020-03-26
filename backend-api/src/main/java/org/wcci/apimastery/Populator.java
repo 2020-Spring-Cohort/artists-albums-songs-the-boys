@@ -41,11 +41,11 @@ public class Populator implements CommandLineRunner {
         albumRepository.save(theEndOfSilence);
         Album aNicerShadeOfRed = new Album("A Nicer Shade Of Red", rollinsBand, "https://upload.wikimedia.org/wikipedia/en/f/fb/Rollins_Red.jpg");
         albumRepository.save(aNicerShadeOfRed);
-        Album ricePasta = new Album("Rice, Pasta, and Other Fillers", porridgeRadio, "https://f4.bcbits.com/img/a4286212805_16.jpg");
+        Album ricePasta = new Album("Rice, Pasta, and Other Fillers", porridgeRadio, "https://img.discogs.com/A9FXqoR8Vd3bqbj1O4TYtQUPwEE=/fit-in/500x784/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-8852963-1476134606-9183.jpeg.jpg");
         albumRepository.save(ricePasta);
-        Album everyBad = new Album("Every Bad", porridgeRadio, "https://media.pitchfork.com/photos/5e61297a5580e10008f9f3b2/1:1/w_600/EveryBad.jpg");
+        Album everyBad = new Album("Every Bad", porridgeRadio, "https://media.pitchfork.com/photos/5e61297a5580e10008f9f3b2/1:1/w_320/EveryBad.jpg");
         albumRepository.save(everyBad);
-        Album nothingSame = new Album("Nothing Was The Same", drake, "https://www.udiscovermusic.com/wp-content/uploads/2018/09/Drake-Nothing-Was-The-Same-deluxe-album-cover-web-optimised-820.jpg");
+        Album nothingSame = new Album("Nothing Was The Same", drake, "https://catalog.1234gorecords.com/images/R-5191591-1387027368-6374.jpeg.jpg");
         albumRepository.save(nothingSame);
         Album views = new Album("Views", drake, "https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Drake_-_Views_cover.jpg/220px-Drake_-_Views_cover.jpg");
         albumRepository.save(views);
@@ -53,9 +53,9 @@ public class Populator implements CommandLineRunner {
         albumRepository.save(closerToSun);
         Album everythingNeed = new Album("Everything You Need", slightlyStoopid, "https://upload.wikimedia.org/wikipedia/en/thumb/e/e4/Everythingyouneedss.jpg/220px-Everythingyouneedss.jpg");
         albumRepository.save(everythingNeed);
-        Album ageAdz = new Album("The Age Of Adz", sufjanStevens, "https://cdn2.thelineofbestfit.com/images/remote/https_cdn2.thelineofbestfit.com/media/2014/sufjan-stevens-age-of-adz-cover-art.jpg");
+        Album ageAdz = new Album("The Age Of Adz", sufjanStevens, "https://upload.wikimedia.org/wikipedia/en/e/e9/Sufjanstevensageofadz.jpg");
         albumRepository.save(ageAdz);
-        Album carrieLowell = new Album("Carrie & Lowell", sufjanStevens, "https://www.slantmagazine.com/wp-content/uploads/2015/07/carrieandlowell.jpg");
+        Album carrieLowell = new Album("Carrie & Lowell", sufjanStevens, "https://upload.wikimedia.org/wikipedia/en/e/ec/Sufjan_Stevens_-_Carrie_%26_Lowell.jpg");
         albumRepository.save(carrieLowell);
         Album badHair = new Album("Bad Hair Day", weirdAlYankovic, "https://upload.wikimedia.org/wikipedia/en/4/49/BadHairDayCover.jpg");
         albumRepository.save(badHair);
