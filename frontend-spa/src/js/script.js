@@ -105,11 +105,13 @@ const renderSingleSongView = (song) =>{
 
 getAllArtists();
 
-    const collectData = () => {
+    const addNewArtist = () => {
         const artistName = document.querySelector(".artist-name");
+
         const newArtistJson = {
             "name": artistName.value
         }
+   
         fetch("http://localhost:8080/artists/", {
             method: "POST",
             headers: {
@@ -121,3 +123,19 @@ getAllArtists();
         .then(()=> getAllArtists())
     }
     
+    const addNewAlbum = (newArtist) =>{
+        const albumName = document.querySelector(".album-name");
+
+        const newAlbumJson = {
+            "name": albumName,
+
+        }
+
+        fetch("http://localhost:8080/", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newAlbumJson)
+        })
+    }
