@@ -105,11 +105,13 @@ const renderSingleSongView = (song) =>{
 
 getAllArtists();
 
-    const collectData = () => {
+    const addNewArtist = () => {
         const artistName = document.querySelector(".artist-name");
+
         const newArtistJson = {
             "name": artistName.value
         }
+   
         fetch("http://localhost:8080/artists/", {
             method: "POST",
             headers: {
@@ -118,6 +120,25 @@ getAllArtists();
             body: JSON.stringify(newArtistJson)
         })
         .then(response => response.json())
+        .then(artist => artist.id)
+        .then(artistId => addNewAlbum(artistId))
         .then(()=> getAllArtists())
     }
-    
+
+    const addNewAlbum = (newArtist) =>{
+        const albumName = document.querySelector(".album-name").value;
+
+        const newAlbumJson = {
+            "name": albumName
+        }
+
+        fetch("http://localhost:8080/artists/" + newArtist + "/albums/", {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newAlbumJson)
+        })
+        .then(stuff => console.log(stuff.json))
+        getAllArtists();
+    }
